@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<<<<<<< HEAD
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>AR Specimen Viewer | ClimateGuard</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:#f8f8f6;}
+    #overlay{position:fixed;top:0;left:0;right:0;z-index:10;padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,.94);backdrop-filter:blur(20px);border-bottom:1px solid #e4e8e4;}
+    .brand{font-family:'DM Serif Display',serif;font-size:1rem;color:#0d1a0f;}
+    #plantName{background:#d4ede0;border-radius:20px;padding:5px 14px;color:#1a5c2e;font-size:.82rem;font-weight:600;}
+    button{padding:8px 20px;font-size:.84rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;}
+    #startAR{background:#1a5c2e;color:#fff;}
+    #startAR:hover{background:#0f3d1e;}
+    #placeBtn{background:#f8f8f6;color:#2a3a2d;border:1.5px solid #e4e8e4;}
+    #placeBtn:hover:not(:disabled){background:#e4e8e4;}
+    #placeBtn:disabled{opacity:.4;cursor:not-allowed;}
+    .back{color:#6b7a6d;text-decoration:none;font-size:.78rem;margin-left:auto;transition:.2s;}
+    .back:hover{color:#0d1a0f;}
+    .ar-user{width:32px;height:32px;border-radius:50%;background:#1a5c2e;color:#fff;display:none;align-items:center;justify-content:center;font-size:.95rem;cursor:pointer;margin-left:auto;transition:.2s;}
+    .ar-user:hover{background:#0f3d1e;}
+    a-scene{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <span class="brand">ClimateGuard AR</span>
+    <div id="plantName">Loading...</div>
+    <button id="startAR">Start AR &#127807;</button>
+    <button id="placeBtn" style="display:none" disabled>Place Specimen &#128205;</button>
+    <a href="plants.html" class="back" id="arBack">&#8592; Back</a>
+  </div>
+  <a-scene vr-mode-ui="enabled:false" embedded renderer="colorManagement:true;physicallyCorrectLights;alpha:true" webxr="optionalFeatures:hit-test,dom-overlay,local-floor;overlayElement:#overlay;" device-orientation-permission-ui="enabled:true;" background="color:#ffffff">
+    <a-entity light="type:directional;intensity:1.5;castShadow:true" position="5 10 7"></a-entity>
+    <a-entity light="type:ambient;intensity:0.9"></a-entity>
+    <a-entity light="type:point;intensity:0.8" position="-5 5 5"></a-entity>
+    <a-entity id="reticle" visible="false" geometry="primitive:ring;radiusInner:0.04;radiusOuter:0.055;" material="color:#1a5c2e;shader:flat;wireframe:false" rotation="-90 0 0" scale="1 1 1"></a-entity>
+    <a-entity id="arModel" visible="false" gltf-model="" scale="1 1 1" position="0 0 0" shadow="receive:true"></a-entity>
+    <a-plane id="ground" visible="false" geometry="primitive:plane;width:100;height:100" material="color:#e4e8e4;side:both" rotation="-90 0 0" position="0 -0.5 0" shadow="receive:true"></a-plane>
+    <a-camera position="0 1.6 0" wasd-controls="acceleration:50"></a-camera>
+  </a-scene>
+  <script>
+    var startBtn=document.getElementById('startAR'),placeBtn=document.getElementById('placeBtn');
+    var scene=document.querySelector('a-scene'),reticle=document.getElementById('reticle'),arModel=document.getElementById('arModel'),plantName=document.getElementById('plantName');
+    var ground=document.getElementById('ground');
+    var xrHit=null,xrSess=null,xrRef=null;
+    var params=new URLSearchParams(window.location.search);
+    var name=params.get('plant')||'Unknown',model=params.get('model'),scale=params.get('scale')||'0.5 0.5 0.5';
+    var modelPlaced=false;
+    
+    // Parse scale from string
+    function parseScale(s){
+      var parts=s.split(' ');
+      return {x:parseFloat(parts[0])||1,y:parseFloat(parts[1])||1,z:parseFloat(parts[2])||1};
+    }
+    
+    document.addEventListener('DOMContentLoaded',function(){
+      plantName.textContent=name;
+      if(model){
+        arModel.setAttribute('gltf-model',model);
+        arModel.setAttribute('scale',scale);
+        placeBtn.disabled=false;
+      } else {
+        plantName.textContent='No model specified';
+        startBtn.disabled=true;
+      }
+    });
+    
+    startBtn.onclick=async function(){
+      if(!model){alert('No 3D model available for this plant.');return;}
+      if(!navigator.xr){alert('WebXR not supported on this device.');return;}
+      if(!await navigator.xr.isSessionSupported('immersive-ar')){alert('AR mode not supported. Please use a device with ARCore/ARKit.');return;}
+      try{
+        xrSess=await navigator.xr.requestSession('immersive-ar',{
+          requiredFeatures:['hit-test','local-floor'],
+          optionalFeatures:['dom-overlay','dom-overlay-for-handheld-ar'],
+          domOverlay:{root:document.body}
+        });
+        scene.renderer.xr.setSession(xrSess);
+        xrRef=await xrSess.requestReferenceSpace('local-floor');
+        var vs=await xrSess.requestReferenceSpace('viewer');
+        xrHit=await xrSess.requestHitTestSource({space:vs});
+        xrSess.addEventListener('end',function(){
+          xrHit=null;
+          xrSess=null;
+          startBtn.style.display='block';
+          placeBtn.style.display='none';
+          arModel.setAttribute('visible','false');
+          reticle.setAttribute('visible','false');
+          modelPlaced=false;
+        });
+        startBtn.style.display='none';
+        placeBtn.style.display='inline-block';
+        xrSess.requestAnimationFrame(onFrame);
+      }catch(err){
+        alert('Failed to start AR: '+err.message);
+        startBtn.style.display='block';
+        placeBtn.style.display='none';
+      }
+    };
+    
+    function onFrame(time,frame){
+      if(!xrSess)return;
+      xrSess.requestAnimationFrame(onFrame);
+      if(!xrHit)return;
+      
+      var results=frame.getHitTestResults(xrHit);
+      if(results.length>0){
+        var pose=results[0].getPose(xrRef);
+        if(!pose)return;
+        reticle.setAttribute('visible','true');
+        reticle.object3D.position.fromArray(Object.values(pose.transform.position));
+        reticle.object3D.quaternion.fromArray([pose.transform.orientation.x,pose.transform.orientation.y,pose.transform.orientation.z,pose.transform.orientation.w]);
+      } else {
+        reticle.setAttribute('visible','false');
+      }
+    }
+    
+    placeBtn.onclick=function(){
+      if(!reticle.getAttribute('visible')){alert('Move to a flat surface and try again.');return;}
+      if(modelPlaced){
+        arModel.setAttribute('visible','false');
+        modelPlaced=false;
+        placeBtn.textContent='Place Specimen &#128205;';
+      } else {
+        var pos=reticle.getAttribute('position');
+        arModel.setAttribute('position',pos);
+        arModel.setAttribute('visible','true');
+        modelPlaced=true;
+        placeBtn.textContent='Remove Specimen &#10006;';
+        placeBtn.style.background='var(--red,#c0392b)';
+        placeBtn.style.color='#fff';
+      }
+    };
+    
+
+  </script>
+</body>
+</html>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Plant Viewer</title>
+
+    <!-- A-Frame Core -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; font-family: sans-serif; }
+      #overlay {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        padding: 12px 18px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        background: green;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      button:hover {
+        background: darkgreen;
+      }
+      button:disabled {
+        background: grey;
+        cursor: not-allowed;
+      }
+      #plantNameDisplay {
+        background: rgba(0,0,0,0.7);
+        padding: 10px 15px;
+        border-radius: 8px;
+        color: white;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="overlay">
+      <div id="plantNameDisplay">Loading Plant...</div>
+      <button id="startAR" style="display:block;">Start AR 🌿</button>
+      <button id="placeButton" style="display:none;" disabled>Place Plant 🌱</button>
+    </div>
+
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      renderer="colorManagement: true; physicallyCorrectLights;"
+      webxr="optionalFeatures: hit-test, dom-overlay, local-floor; overlayElement: #overlay;"
+      device-orientation-permission-ui="enabled: true;"
+    >
+      <a-entity light="type: directional; intensity: 1;" position="1 3 2"></a-entity>
+      <a-entity light="type: ambient; intensity: 0.6"></a-entity>
+
+      <!-- Reticle -->
+      <a-entity
+        id="reticle"
+        visible="false"
+        geometry="primitive: ring; radiusInner: 0.04; radiusOuter: 0.05;"
+        material="color: lime; shader: flat;"
+        rotation="-90 0 0"
+      ></a-entity>
+
+      <!-- Dynamically loaded Plant Model -->
+      <a-entity
+        id="arPlantModel"
+        visible="false"
+        gltf-model=""
+      ></a-entity>
+
+      <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
+
+    <script>
+      const startARBtn = document.getElementById("startAR");
+      const placeBtn = document.getElementById("placeButton");
+      const scene = document.querySelector("a-scene");
+      const reticle = document.getElementById("reticle");
+      const arPlantModel = document.getElementById("arPlantModel");
+      const plantNameDisplay = document.getElementById("plantNameDisplay");
+
+      let xrHitTestSource = null;
+      let xrSession = null;
+      let xrRefSpace = null;
+
+      // Get plant data from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const plantName = urlParams.get('plant') || 'Unknown Plant';
+      const modelUrl = urlParams.get('model');
+      const scale = urlParams.get('scale') || "0.5 0.5 0.5"; // Default scale if not provided
+
+      document.addEventListener('DOMContentLoaded', () => {
+          plantNameDisplay.textContent = `Viewing: ${plantName}`;
+          if (modelUrl) {
+              arPlantModel.setAttribute("gltf-model", modelUrl);
+              arPlantModel.setAttribute("scale", scale); // Apply the scale here
+              placeBtn.disabled = false; // Enable place button once model is loaded
+          } else {
+              plantNameDisplay.textContent = "Error: No plant model specified.";
+              startARBtn.disabled = true;
+          }
+      });
+
+      startARBtn.onclick = async () => {
+        if (!modelUrl) {
+            alert("No plant model available to view in AR.");
+            return;
+        }
+        if (!navigator.xr) {
+          alert("WebXR not supported on this browser.");
+          return;
+        }
+
+        const supported = await navigator.xr.isSessionSupported("immersive-ar");
+        if (!supported) {
+          alert("AR not supported on this device.");
+          return;
+        }
+
+        try {
+            xrSession = await navigator.xr.requestSession("immersive-ar", {
+              requiredFeatures: ["hit-test", "local-floor"],
+              optionalFeatures: ["dom-overlay"],
+              domOverlay: { root: document.body },
+            });
+
+            scene.renderer.xr.setSession(xrSession);
+
+            xrRefSpace = await xrSession.requestReferenceSpace("local-floor");
+            const viewerSpace = await xrSession.requestReferenceSpace("viewer");
+            xrHitTestSource = await xrSession.requestHitTestSource({ space: viewerSpace });
+
+            xrSession.addEventListener("end", () => {
+              xrHitTestSource = null;
+              xrSession = null;
+              startARBtn.style.display = "block";
+              placeBtn.style.display = "none";
+              arPlantModel.setAttribute("visible", "false"); // Hide plant when AR ends
+              reticle.setAttribute("visible", "false"); // Hide reticle when AR ends
+            });
+
+            startARBtn.style.display = "none";
+            placeBtn.style.display = "inline-block";
+
+            xrSession.requestAnimationFrame(onXRFrame);
+        } catch (error) {
+            alert("Failed to start AR session: " + error.message);
+            console.error("AR Session Error:", error);
+            startARBtn.style.display = "block";
+            placeBtn.style.display = "none";
+        }
+      };
+
+      function onXRFrame(time, frame) {
+        if (!xrSession) return;
+        const session = xrSession;
+        session.requestAnimationFrame(onXRFrame);
+
+        if (!xrHitTestSource) return;
+
+        const hitTestResults = frame.getHitTestResults(xrHitTestSource);
+        if (hitTestResults.length > 0) {
+          const hitPose = hitTestResults[0].getPose(xrRefSpace);
+          if (!hitPose) return;
+
+          reticle.visible = true;
+          reticle.object3D.position.set(
+            hitPose.transform.position.x,
+            hitPose.transform.position.y,
+            hitPose.transform.position.z
+          );
+          reticle.object3D.quaternion.set(
+            hitPose.transform.orientation.x,
+            hitPose.transform.orientation.y,
+            hitPose.transform.orientation.z,
+            hitPose.transform.orientation.w
+          );
+        } else {
+          reticle.visible = false;
+        }
+      }
+
+      placeBtn.onclick = () => {
+        if (!reticle.visible) {
+          alert("Move your phone to find a surface first!");
+          return;
+        }
+        if (!modelUrl) {
+            alert("No plant model selected to place!");
+            return;
+        }
+        const pos = reticle.getAttribute("position");
+        arPlantModel.setAttribute("position", pos);
+        arPlantModel.setAttribute("visible", "true");
+        // Optionally hide the reticle after placing
+        // reticle.setAttribute("visible", "false");
+      };
+    </script>
+  </body>
+</html>
+>>>>>>> aeb5ba890b737b73f44ba9dfafba86255630cb45

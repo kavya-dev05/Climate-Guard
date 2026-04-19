@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<<<<<<< HEAD
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Specimens | ClimateGuard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--white:#ffffff;--offwhite:#f8f8f6;--ink:#0d1a0f;--ink2:#2a3a2d;--muted:#6b7a6d;--border:#e4e8e4;--green:#1a5c2e;--green-dark:#0f3d1e;--green-pill:#d4ede0;--green-pill-text:#1a5c2e;--accent:#2d7a47;--nh:60px;--ease:cubic-bezier(.16,1,.3,1);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+nav{height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);text-decoration:none;}
+.nl{list-style:none;display:flex;align-items:center;gap:2px;}
+.nl a{font-size:.84rem;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;transition:.18s;position:relative;}
+.nl a.active{color:var(--ink);font-weight:600;}
+.nl a.active::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:var(--green);border-radius:2px;}
+.nl a:hover{color:var(--ink);}
+.nr{display:flex;align-items:center;gap:10px;}
+.ni{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;cursor:pointer;}
+.ni:hover{background:var(--offwhite);}
+.ns{background:var(--green);color:#fff;font-size:.82rem;font-weight:600;padding:8px 18px;border-radius:7px;text-decoration:none;}
+.ns:hover{background:var(--green-dark);}
+.nav-user{display:flex;align-items:center;margin-left:4px;position:relative;}
+.nav-avatar{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:700;cursor:pointer;transition:.2s;text-transform:uppercase;}
+.nav-avatar:hover{background:var(--green-dark);}
+.nav-avatar-wrap{display:flex;align-items:center;gap:6px;}
+.nav-avatar-arrow{font-size:.6rem;color:var(--muted);transition:transform .2s;margin-left:2px;}
+.nav-user.open .nav-avatar-arrow{transform:rotate(180deg);}
+.profile-drop{position:absolute;top:calc(100% + 10px);right:0;width:240px;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.12);z-index:300;opacity:0;transform:translateY(-8px) scale(.97);pointer-events:none;transition:opacity .22s var(--ease),transform .22s var(--ease);}
+.profile-drop.open{opacity:1;transform:none;pointer-events:all;}
+.pd-header{padding:18px 18px 14px;border-bottom:1px solid var(--border);}
+.pd-name{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.pd-email{font-size:.76rem;color:var(--muted);}
+.pd-menu{padding:8px;}
+.pd-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:.84rem;color:var(--ink2);cursor:pointer;transition:.15s;text-decoration:none;}
+.pd-item:hover{background:var(--offwhite);color:var(--ink);}
+.pd-item.danger{color:#c0392b;}
+.pd-item.danger:hover{background:#fde8e8;}
+.pd-divider{height:1px;background:var(--border);margin:6px 0;}
+
+/* PAGE TRANSITIONS */
+.page-enter{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.page-enter-active{opacity:1;transform:none;}
+.page-leaving{opacity:0;transform:translateY(-8px);transition:opacity .28s ease,transform .28s ease;}
+.login-landing{animation:loginReveal .7s .15s var(--ease) both;}
+@keyframes loginReveal{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--white);}
+.fl{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--ink);}
+.flinks{display:flex;gap:24px;flex-wrap:wrap;}
+.flinks a{font-size:.78rem;color:var(--muted);text-decoration:none;}
+.flinks a:hover{color:var(--ink);}
+footer p{font-size:.75rem;color:var(--muted);}
+@keyframes fadeup{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes spinr{to{transform:rotate(360deg);}}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+
+/* HERO with garden photo */
+.ph{
+  position:relative;
+  padding:80px 48px 80px;max-width:1200px;margin:0 auto;
+}
+/* Photo sits as a big image on the right, text on left — like reference */
+.ph-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.ph-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-pill);color:var(--green-pill-text);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:24px;width:fit-content;}
+.ph-pill::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;}
+.ph-title{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.0;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px;}
+.ph-title em{font-style:italic;}
+.ph-sub{font-size:.95rem;color:var(--muted);line-height:1.82;max-width:400px;font-weight:300;margin-bottom:36px;}
+/* Right side: real photo of beautiful garden */
+.ph-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 28px 70px rgba(0,0,0,.14);}
+.ph-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease);}
+.ph-photo:hover img{transform:scale(1.04);}
+
+/* SEARCH */
+.sw{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:44px;}
+.sr{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.sl{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+.ss{flex:1;min-width:180px;padding:10px 34px 10px 12px;font-family:'DM Sans',sans-serif;background:var(--offwhite);border:1.5px solid var(--border);border-radius:8px;color:var(--ink);font-size:.9rem;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7a6d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:18px;transition:.2s;}
+.ss:focus{border-color:var(--green);background:var(--white);}
+.ss option{background:#fff;color:var(--ink);}
+.sb{padding:10px 24px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.86rem;cursor:pointer;transition:.2s;white-space:nowrap;flex-shrink:0;}
+.sb:hover{background:var(--green-dark);}
+.wr{flex-basis:100%;padding:11px 14px;background:var(--offwhite);border:1.5px solid var(--border);border-radius:8px;font-size:.84rem;color:var(--ink2);display:none;margin-top:4px;}
+.wr.show{display:block;}
+.sp{display:none;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spinr .7s linear infinite;}
+.rm{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;}
+.rm h3{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);}
+.zt{padding:4px 12px;background:var(--green-pill);border-radius:20px;font-size:.72rem;font-weight:600;color:var(--green-pill-text);letter-spacing:.06em;text-transform:uppercase;}
+
+/* PLANT CARDS */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+.pc{background:var(--white);border:1px solid var(--border);border-radius:13px;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease),box-shadow .3s;}
+.pc.show{opacity:1;transform:none;}
+.pc:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,.08);}
+.p-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;}
+.p-img.tz{background:linear-gradient(135deg,#c8e6c9,#a5d6a7);}
+.p-img.dz{background:linear-gradient(135deg,#ffe0b2,#ffcc80);}
+.p-img.tmz{background:linear-gradient(135deg,#b2dfdb,#80cbc4);}
+.p-img.hz{background:linear-gradient(135deg,#bbdefb,#90caf9);}
+.p-img.cz{background:linear-gradient(135deg,#e1f5fe,#b3e5fc);}
+.p-img.iz{background:linear-gradient(135deg,#f3e5f5,#ce93d8);}
+.p-ztag{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.88);border-radius:20px;padding:3px 10px;font-size:.65rem;font-weight:600;color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;}
+.p-body{padding:16px 18px 18px;}
+.p-name{font-family:'DM Serif Display',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:5px;}
+.p-desc{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.p-ar{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:600;color:var(--green);text-decoration:none;transition:.2s;}
+.p-ar:hover{color:var(--green-dark);}
+.empty-s{grid-column:1/-1;text-align:center;padding:64px 20px;border:1.5px dashed var(--border);border-radius:12px;}
+.ei{font-size:3rem;margin-bottom:14px;opacity:.35;}
+.empty-s h3{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);margin-bottom:6px;}
+.empty-s p{font-size:.86rem;color:var(--muted);}
+
+@media(max-width:900px){nav{padding:0 20px;}.nl{display:none;}.ph{padding:48px 20px;}.ph-inner{grid-template-columns:1fr;gap:36px;}.ph-photo{aspect-ratio:16/9;order:-1;}.sw,.rm,.pg{padding-left:0;padding-right:0;}.pg{grid-template-columns:1fr;}footer{padding:20px;justify-content:center;flex-direction:column;text-align:center;}.flinks{justify-content:center;}}
+</style>
+</head>
+<body class="page-enter">
+<nav>
+  <a href="index.html" class="nav-logo">ClimateGuard AR</a>
+  <ul class="nl">
+    <li><a href="index.html">Discovery</a></li>
+    <li><a href="conditions.html">Climate Lab</a></li>
+    <li><a href="plants.html" class="active">Botanical</a></li>
+    <li><a href="ai-suggestion.html">Innovation</a></li>
+    <li><a href="about.html">Insights</a></li>
+  </ul>
+  <div class="nr"></div>
+</nav>
+
+<!-- HERO: same split layout as reference index, but for specimens -->
+<div class="ph">
+  <div class="ph-inner">
+    <div>
+      <div class="ph-pill rv">Specimen Archive</div>
+      <h1 class="ph-title rv">Find your<br><em>perfect</em> plant<br>match.</h1>
+      <p class="ph-sub rv">Select your Indian city. We fetch real-time weather and match plants from our 80-specimen database to your exact climate zone.</p>
+      <!-- Search inline in hero -->
+      <div class="sw rv">
+        <div class="sr">
+          <div class="sl">Your City</div>
+          <select id="csel" class="ss"><option value="">Choose a city...</option></select>
+          <div class="sp" id="spinner"></div>
+          <button class="sb" onclick="getWeather()">Analyse Climate</button>
+          <div class="wr" id="wRes"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- Lush garden plant photo — no overlay, full quality -->
+      <div class="ph-photo rv">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=85&auto=format&fit=crop" alt="Plant specimens">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 100px;">
+  <div class="rm" id="rMeta" style="display:none"><h3 id="rTitle"></h3><div class="zt" id="zTag"></div></div>
+  <div class="pg" id="pGrid">
+    <div class="empty-s">
+      <div class="ei">&#127807;</div>
+      <h3>Select your city above</h3>
+      <p>We will fetch live weather and surface the best plants for your exact climate zone across all of India.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">ClimateGuard AR</div>
+  <div class="flinks"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Research Ethics</a><a href="contact.html">Contact</a></div>
+  <p>&copy; 2025 ClimateGuard AR. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+/* Page transitions */
+document.querySelectorAll('a[href]').forEach(function(link){
+  var href=link.getAttribute('href');
+  if(href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('http')){
+    link.addEventListener('click',function(e){e.preventDefault();document.body.classList.add('page-leaving');setTimeout(function(){window.location.href=href;},280);});
+  }
+});
+document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('page-enter-active');});
+
+var io=new IntersectionObserver(function(e){e.forEach(function(x,i){if(x.isIntersecting){setTimeout(function(){x.target.classList.add('in');},i*55);io.unobserve(x.target);}});},{threshold:0.06});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+// API key should be set via environment or backend API endpoint (NEVER hardcode in frontend)
+// Using Open-Meteo as primary (free, no key needed) with graceful fallback
+var API=null; // Placeholder; backend should handle API calls securely
+var CITIES=["Agra","Ahmedabad","Aizawl","Ajmer","Alappuzha","Aligarh","Allahabad","Ambala","Amravati","Amritsar","Anantapur","Asansol","Aurangabad","Ayodhya","Bahraich","Bareilly","Bathinda","Belgaum","Bellary","Bengaluru","Bhagalpur","Bharatpur","Bhavnagar","Bhilai","Bhiwandi","Bhopal","Bhubaneswar","Bidar","Bikaner","Bilaspur","Bokaro","Calicut","Chandigarh","Chennai","Coimbatore","Cuttack","Darbhanga","Dehradun","Delhi","Dhanbad","Durgapur","Erode","Faridabad","Gandhinagar","Gangtok","Gaya","Ghaziabad","Gorakhpur","Guntur","Gurgaon","Guwahati","Gwalior","Haridwar","Howrah","Hubli","Hyderabad","Imphal","Indore","Jabalpur","Jaipur","Jalandhar","Jammu","Jamnagar","Jamshedpur","Jhansi","Jodhpur","Kakinada","Kanpur","Karimnagar","Karnal","Kochi","Kolhapur","Kolkata","Kollam","Kota","Kottayam","Kurnool","Lucknow","Ludhiana","Madurai","Mangaluru","Mathura","Meerut","Mirzapur","Moradabad","Mumbai","Muzaffarpur","Mysore","Nagercoil","Nagpur","Nashik","Nellore","New Delhi","Noida","Panipat","Patna","Pilibhit","Pondicherry","Pune","Puri","Raipur","Rajkot","Ranchi","Rohtak","Saharanpur","Salem","Surat","Thane","Thiruvananthapuram","Thrissur","Tiruchirappalli","Tirupati","Udaipur","Vadodara","Varanasi","Vellore","Vijayawada","Visakhapatnam","Warangal"];
+/* ============================================================
+   PLANT DATABASE — only plants with existing .glb models
+   All model paths use 'plants/' prefix for ar-view to load correctly
+   ============================================================ */
+var DB={
+  "Wheat Plant":{d:"Essential staple grain, thrives in cool dry climates.",z:"temperate",m:"plants/wheat__free.glb",s:"0.8 0.8 0.8",e:"🌾",cl:"tmz"},
+  "Frangipani Tree":{d:"Tropical flowering tree with heavenly fragrant blossoms.",z:"tropical",m:"plants/realistic_hd_frangipani_tree_150.glb",s:"2.5 2.5 2.5",e:"🌺",cl:"tz"},
+  "Rose":{d:"Classic flowering shrub prized for its beauty and scent.",z:"temperate",m:"plants/rose_flower.glb",s:"0.5 0.5 0.5",e:"🌹",cl:"tmz"},
+  "Rubber Plant":{d:"Large-leafed indoor tree excellent for air purification.",z:"indoor",m:"plants/rubber_plant_fig.glb",s:"1.4 1.4 1.4",e:"🌿",cl:"iz"},
+  "Snowdrop":{d:"Delicate white bell-shaped flower blooming in late winter.",z:"cold",m:"plants/snowdrop_pack_lowpoly_gameready_lod.glb",s:"0.2 0.2 0.2",e:"❄️",cl:"cz"},
+  "Spider Plant":{d:"Easy-care indoor plant producing cascading plantlets.",z:"indoor",m:"plants/spider_plant.glb",s:"0.4 0.4 0.4",e:"🌿",cl:"iz"},
+  "Spruce Tree":{d:"Majestic coniferous evergreen thriving in cold regions.",z:"cold",m:"plants/spruce_tree_-_low_poly.glb",s:"4 4 4",e:"🌲",cl:"cz"},
+  "Sugarcane":{d:"Tall tropical grass cultivated for sugar production.",z:"humid",m:"plants/sugarcane.glb",s:"2 2 2",e:"🌱",cl:"hz"},
+  "Sunflower":{d:"Cheerful sun-following bloom thriving in warm climates.",z:"temperate",m:"plants/sunflower.glb",s:"1.2 1.2 1.2",e:"🌻",cl:"tmz"},
+  "Taro":{d:"Tropical root vegetable needing consistently moist soil.",z:"humid",m:"plants/taro.glb",s:"0.6 0.6 0.6",e:"🍠",cl:"hz"},
+  "Thyme":{d:"Fragrant culinary herb preferring dry sunny conditions.",z:"temperate",m:"plants/thyme_bush.glb",s:"0.25 0.25 0.25",e:"🌿",cl:"tmz"},
+  "Tulsi Holy Basil":{d:"Sacred medicinal herb deeply valued in Indian culture.",z:"tropical",m:"plants/tulsi_tree_on_a_cement_tub.glb",s:"0.4 0.4 0.4",e:"🌿",cl:"tz"},
+  "Pansy":{d:"Colourful cold-season flower with distinctive face markings.",z:"temperate",m:"plants/violaceae__primula_pansy_flower__primrose.glb",s:"0.3 0.3 0.3",e:"🌸",cl:"tmz"},
+  "Western Juniper":{d:"Hardy drought-tolerant evergreen for arid landscapes.",z:"desert",m:"plants/western_juniper.glb",s:"2 2 2",e:"🌵",cl:"dz"},
+  "Neem Tree":{d:"Revered medicinal tree with outstanding drought tolerance.",z:"tropical",m:"plants/neem_tree.glb",s:"3.5 3.5 3.5",e:"🌳",cl:"tz"},
+  "Oak Tree":{d:"Majestic deciduous tree, backbone of temperate forests.",z:"temperate",m:"plants/oak_tree.glb",s:"4 4 4",e:"🌳",cl:"tmz"},
+  "Prickly Pear Cactus":{d:"Iconic succulent with edible pads and vibrant fruits.",z:"desert",m:"plants/opuntia_prickly_pear_cactus.glb",s:"1 1 1",e:"🌵",cl:"dz"},
+  "Peace Lily":{d:"Elegant indoor plant with white spathes, purifies air.",z:"indoor",m:"plants/peace_lily.glb",s:"0.5 0.5 0.5",e:"🌿",cl:"iz"},
+  "Pine":{d:"Towering evergreen conifer at home in cold mountain forests.",z:"cold",m:"plants/pine.glb",s:"4 4 4",e:"🌲",cl:"cz"},
+  "Plumeria":{d:"Stunning tropical bloom with an intoxicating fragrance.",z:"tropical",m:"plants/plumeria_flower.glb",s:"0.9 0.9 0.9",e:"🌸",cl:"tz"},
+  "Pomegranate":{d:"Ancient fruit tree thriving in semi-arid warm climates.",z:"temperate",m:"plants/pomegranatepunica_granatum_l.glb",s:"1.5 1.5 1.5",e:"🍎",cl:"tmz"},
+  "Pothos":{d:"Trailing indoor vine, nearly impossible to kill.",z:"indoor",m:"plants/pothos_plant.glb",s:"0.8 0.8 0.8",e:"🌿",cl:"iz"},
+  "Morning Glory":{d:"Climbing vine bursting with vibrant trumpet-shaped blooms.",z:"tropical",m:"plants/morning_glory_dense_plant_points_challenge.glb",s:"1 1 1",e:"💜",cl:"tz"},
+  "Jasmine":{d:"Beloved fragrant vine filling warm evenings with scent.",z:"tropical",m:"plants/jasmine.glb",s:"0.7 0.7 0.7",e:"🤍",cl:"tz"},
+  "Joshua Tree":{d:"Iconic slow-growing desert sentinel of arid landscapes.",z:"desert",m:"plants/joshua_trees.glb",s:"3 3 3",e:"🌵",cl:"dz"},
+  "Lavender":{d:"Aromatic Mediterranean herb beloved by pollinators.",z:"temperate",m:"plants/lavender.glb",s:"0.4 0.4 0.4",e:"💜",cl:"tmz"},
+  "Mango Tree":{d:"King of Indian fruits, thrives in tropical warmth.",z:"tropical",m:"plants/mango_tree.glb",s:"3 3 3",e:"🥭",cl:"tz"},
+  "Mangrove Tree":{d:"Vital coastal guardian, salt-tolerant, ecosystem-forming.",z:"humid",m:"plants/mangrove_tree.glb",s:"3.5 3.5 3.5",e:"🌳",cl:"hz"},
+  "Maple Tree":{d:"Spectacular deciduous tree with dazzling autumn foliage.",z:"temperate",m:"plants/maple_tree.glb",s:"4 4 4",e:"🍁",cl:"tmz"},
+  "Fir Tree":{d:"Elegant conifer gracing mountain slopes and cold forests.",z:"cold",m:"plants/fir_tree.glb",s:"4 4 4",e:"🌲",cl:"cz"},
+  "Fishhook Barrel Cactus":{d:"Large cylindrical cactus with dramatic curved spines.",z:"desert",m:"plants/fishhook_barrel_cactus.glb",s:"0.8 0.8 0.8",e:"🌵",cl:"dz"},
+  "Money Plant":{d:"Iconic trailing houseplant said to bring prosperity.",z:"indoor",m:"plants/free_pothos_potted_plant_-_money_plant.glb",s:"0.8 0.8 0.8",e:"💰",cl:"iz"},
+  "Tulip":{d:"Elegant spring bulb blooming in a spectrum of colours.",z:"temperate",m:"plants/generic_tulip_flower.glb",s:"0.4 0.4 0.4",e:"🌷",cl:"tmz"},
+  "Ginger":{d:"Tropical rhizome prized for culinary and medicinal use.",z:"tropical",m:"plants/ginger_root.glb",s:"0.3 0.3 0.3",e:"🫚",cl:"tz"},
+  "Grape Vine":{d:"Woody climbing vine producing sweet fruit in warm climates.",z:"temperate",m:"plants/grape_vines.glb",s:"2 2 2",e:"🍇",cl:"tmz"},
+  "Guava Tree":{d:"Productive tropical fruit tree with distinctive flavour.",z:"tropical",m:"plants/guava_tree_3d_model.glb",s:"2 2 2",e:"🍐",cl:"tz"},
+  "Jade Plant":{d:"Succulent houseplant with thick glossy leaves and longevity.",z:"indoor",m:"plants/jade_plant.glb",s:"0.6 0.6 0.6",e:"🪴",cl:"iz"},
+  "Tea Plant":{d:"The source of all tea, thrives on cool humid hillsides.",z:"humid",m:"plants/cc0___tea_plant_camellia_sinensis.glb",s:"1 1 1",e:"🍵",cl:"hz"},
+  "Cedar":{d:"Aromatic giant conifer known for its fragrant wood.",z:"cold",m:"plants/cedar.glb",s:"4.5 4.5 4.5",e:"🌲",cl:"cz"},
+  "Cherry Blossom":{d:"Celebrated flowering tree, stunning in spring bloom.",z:"temperate",m:"plants/cherry_blossom_trees.glb",s:"3 3 3",e:"🌸",cl:"tmz"},
+  "Coconut Palm":{d:"The tree of life for tropical coastal communities.",z:"humid",m:"plants/coconut_palm.glb",s:"2.5 2.5 2.5",e:"🥥",cl:"hz"},
+  "Coffee Plant":{d:"Source of the world's favourite morning ritual.",z:"humid",m:"plants/coffee_plant_sasha_an.glb",s:"1.2 1.2 1.2",e:"☕",cl:"hz"},
+  "Colocasia":{d:"Bold tropical foliage with enormous heart-shaped leaves.",z:"tropical",m:"plants/colocasia_potted.glb",s:"0.7 0.7 0.7",e:"🌿",cl:"tz"},
+  "Daffodil":{d:"Cheerful spring bulb with iconic trumpet-shaped bloom.",z:"temperate",m:"plants/daffodil.glb",s:"0.3 0.3 0.3",e:"🤍",cl:"tmz"},
+  "Daisy":{d:"Simple cheerful flower with white petals and golden centre.",z:"temperate",m:"plants/daisy_flower.glb",s:"0.2 0.2 0.2",e:"🤍",cl:"tmz"},
+  "Date Palm":{d:"Ancient desert fruit tree, essential to arid communities.",z:"desert",m:"plants/date_palm.glb",s:"3.5 3.5 3.5",e:"🌴",cl:"dz"},
+  "Snake Plant":{d:"Near-indestructible air purifier thriving on neglect.",z:"indoor",m:"plants/day_178_snake_plant.glb",s:"0.7 0.7 0.7",e:"🌿",cl:"iz"},
+  "Desert Rose":{d:"Striking slow-growing succulent blooming in arid heat.",z:"desert",m:"plants/desert_rose.glb",s:"0.6 0.6 0.6",e:"🌺",cl:"dz"},
+  "Fern":{d:"Ancient moisture-loving shade plant with delicate fronds.",z:"humid",m:"plants/fern.glb",s:"0.6 0.6 0.6",e:"🌿",cl:"hz"},
+  "Cactus":{d:"Master of survival in the harshest dry environments.",z:"desert",m:"plants/cactus.glb",s:"0.5 0.5 0.5",e:"🌵",cl:"dz"},
+  "Aloe Vera":{d:"Multipurpose succulent with legendary healing properties.",z:"desert",m:"plants/aloe_vera_plant.glb",s:"0.4 0.4 0.4",e:"🌿",cl:"dz"},
+  "Apple Tree":{d:"Classic orchard tree requiring cold winters for sweet fruit.",z:"cold",m:"plants/apple_tree.glb",s:"3.5 3.5 3.5",e:"🍎",cl:"cz"},
+  "Areca Palm":{d:"Elegant ornamental palm adding tropical flair anywhere.",z:"humid",m:"plants/areca_palm_lowpoly.glb",s:"1.5 1.5 1.5",e:"🌴",cl:"hz"},
+  "Bamboo":{d:"The world's fastest growing plant, versatile and elegant.",z:"humid",m:"plants/bamboo.glb",s:"2 2 2",e:"🎋",cl:"hz"},
+  "Banana Plant":{d:"Lush tropical fruit plant bringing instant jungle drama.",z:"tropical",m:"plants/banana_plant.glb",s:"1.8 1.8 1.8",e:"🍌",cl:"tz"},
+  "Birch Tree":{d:"Graceful tree with striking white bark, glowing in winter.",z:"cold",m:"plants/birch_tree.glb",s:"3.8 3.8 3.8",e:"🌳",cl:"cz"},
+  "Bougainvillea":{d:"Blazing drought-tolerant climber, a wall of pure colour.",z:"desert",m:"plants/bougainvillea_day_26.glb",s:"1 1 1",e:"🌺",cl:"dz"},
+  "Rice Plant":{d:"The staple grain feeding over half of humanity.",z:"humid",m:"plants/rice_plant.glb",s:"0.7 0.7 0.7",e:"🌾",cl:"hz"},
+  "Chinese Evergreen":{d:"Stunning patterned indoor plant with extreme tolerance.",z:"indoor",m:"plants/aglaonema_chinese_evergreen_-_sketchfab_weekly.glb",s:"0.7 0.7 0.7",e:"🌿",cl:"iz"}
+};
+var CATS={
+  desert:["Prickly Pear Cactus","Fishhook Barrel Cactus","Joshua Tree","Cactus","Aloe Vera","Bougainvillea","Western Juniper","Desert Rose","Date Palm"],
+  tropical:["Frangipani Tree","Tulsi Holy Basil","Neem Tree","Plumeria","Mango Tree","Morning Glory","Jasmine","Ginger","Guava Tree","Colocasia","Banana Plant"],
+  humid:["Rice Plant","Sugarcane","Taro","Mangrove Tree","Tea Plant","Coconut Palm","Coffee Plant","Fern","Areca Palm","Bamboo"],
+  temperate:["Wheat Plant","Rose","Sunflower","Thyme","Pansy","Oak Tree","Pomegranate","Lavender","Maple Tree","Tulip","Grape Vine","Cherry Blossom","Daffodil","Daisy"],
+  cold:["Snowdrop","Spruce Tree","Pine","Fir Tree","Cedar","Apple Tree","Birch Tree"],
+  indoor:["Rubber Plant","Spider Plant","Peace Lily","Pothos","Money Plant","Jade Plant","Snake Plant","Chinese Evergreen"]
+};
+var ZONES={desert:"Desert",tropical:"Tropical",humid:"Humid",temperate:"Temperate",cold:"Alpine",indoor:"Indoor"};
+
+/* ============================================================
+   ENHANCED DB — with scientific tolerance ranges per plant
+   temp:  {min, max, ideal} in Celsius
+   humid: {min, max, ideal} in % relative humidity
+   rain:  'low' | 'medium' | 'high'
+   sun:   'full' | 'partial' | 'shade'
+   native: is native to India
+   season: active growing season(s)
+   notes: special care tip
+   ============================================================ */
+var EDB={};
+(function(){
+  var d=DB;
+  for(var k in d){
+    var p=d[k];
+    EDB[k]={
+      d:p.d,z:p.z,m:p.m,s:p.s,e:p.e,cl:p.cl,
+      temp:{min:10,max:35,ideal:22},
+      humid:{min:40,max:75,ideal:60},
+      rain:'medium',sun:'full',native:false,
+      season:['all'],notes:p.d
+    };
+  }
+  // Override with accurate scientific data
+  EDB['Wheat Plant']={d:d['Wheat Plant'].d,z:d['Wheat Plant'].z,m:d['Wheat Plant'].m,s:d['Wheat Plant'].s,e:d['Wheat Plant'].e,cl:d['Wheat Plant'].cl,temp:{min:5,max:30,ideal:20},humid:{min:30,max:70,ideal:50},rain:'medium',sun:'full',native:true,season:['winter','spring'],notes:'Sow Oct–Dec in North India; Feb–Mar in East'};
+  EDB['Frangipani Tree']={d:d['Frangipani Tree'].d,z:d['Frangipani Tree'].z,m:d['Frangipani Tree'].m,s:d['Frangipani Tree'].s,e:d['Frangipani Tree'].e,cl:d['Frangipani Tree'].cl,temp:{min:18,max:40,ideal:28},humid:{min:50,max:90,ideal:70},rain:'medium',sun:'full',native:false,season:['summer','monsoon'],notes:'Loves coastal warmth; avoid cold drafts'};
+  EDB['Rose']={d:d['Rose'].d,z:d['Rose'].z,m:d['Rose'].m,s:d['Rose'].s,e:d['Rose'].e,cl:d['Rose'].cl,temp:{min:10,max:35,ideal:22},humid:{min:40,max:75,ideal:60},rain:'medium',sun:'full',native:false,season:['winter','spring','autumn'],notes:'Prune Jan–Feb; deadhead for continuous blooms'};
+  EDB['Rubber Plant']={d:d['Rubber Plant'].d,z:d['Rubber Plant'].z,m:d['Rubber Plant'].m,s:d['Rubber Plant'].s,e:d['Rubber Plant'].e,cl:d['Rubber Plant'].cl,temp:{min:15,max:35,ideal:25},humid:{min:40,max:80,ideal:60},rain:'medium',sun:'partial',native:false,season:['all'],notes:'Wipe leaves monthly; avoid direct harsh sunlight'};
+  EDB['Snowdrop']={d:d['Snowdrop'].d,z:d['Snowdrop'].z,m:d['Snowdrop'].m,s:d['Snowdrop'].s,e:d['Snowdrop'].e,cl:d['Snowdrop'].cl,temp:{min:-15,max:15,ideal:5},humid:{min:50,max:85,ideal:65},rain:'medium',sun:'partial',native:false,season:['winter'],notes:'Plant bulbs in autumn; needs cold winters to bloom'};
+  EDB['Spider Plant']={d:d['Spider Plant'].d,z:d['Spider Plant'].z,m:d['Spider Plant'].m,s:d['Spider Plant'].s,e:d['Spider Plant'].e,cl:d['Spider Plant'].cl,temp:{min:10,max:35,ideal:22},humid:{min:30,max:80,ideal:55},rain:'low',sun:'partial',native:false,season:['all'],notes:'Brown tips = fluoride sensitive; use filtered water'};
+  EDB['Spruce Tree']={d:d['Spruce Tree'].d,z:d['Spruce Tree'].z,m:d['Spruce Tree'].m,s:d['Spruce Tree'].s,e:d['Spruce Tree'].e,cl:d['Spruce Tree'].cl,temp:{min:-25,max:20,ideal:8},humid:{min:40,max:80,ideal:60},rain:'medium',sun:'full',native:false,season:['all'],notes:'Ideal for Himalayan foothills above 1500m elevation'};
+  EDB['Sugarcane']={d:d['Sugarcane'].d,z:d['Sugarcane'].z,m:d['Sugarcane'].m,s:d['Sugarcane'].s,e:d['Sugarcane'].e,cl:d['Sugarcane'].cl,temp:{min:20,max:40,ideal:30},humid:{min:60,max:90,ideal:75},rain:'high',sun:'full',native:true,season:['summer','monsoon'],notes:'Needs 15–20 monthly rainfall; harvest Jan–Mar'};
+  EDB['Sunflower']={d:d['Sunflower'].d,z:d['Sunflower'].z,m:d['Sunflower'].m,s:d['Sunflower'].s,e:d['Sunflower'].e,cl:d['Sunflower'].cl,temp:{min:15,max:35,ideal:25},humid:{min:30,max:70,ideal:50},rain:'low',sun:'full',native:false,season:['summer','autumn'],notes:'Sow Mar–Jun; faces east; attracts pollinators'};
+  EDB['Taro']={d:d['Taro'].d,z:d['Taro'].z,m:d['Taro'].m,s:d['Taro'].s,e:d['Taro'].e,cl:d['Taro'].cl,temp:{min:18,max:35,ideal:27},humid:{min:60,max:100,ideal:80},rain:'high',sun:'partial',native:true,season:['monsoon','summer'],notes:'Keep soil waterlogged; harvest before cold sets in'};
+  EDB['Thyme']={d:d['Thyme'].d,z:d['Thyme'].z,m:d['Thyme'].m,s:d['Thyme'].s,e:d['Thyme'].e,cl:d['Thyme'].cl,temp:{min:5,max:30,ideal:18},humid:{min:20,max:60,ideal:40},rain:'low',sun:'full',native:false,season:['spring','summer','autumn'],notes:'Perfect for rooftop gardens; drought-tolerant once established'};
+  EDB['Tulsi Holy Basil']={d:d['Tulsi Holy Basil'].d,z:d['Tulsi Holy Basil'].z,m:d['Tulsi Holy Basil'].m,s:d['Tulsi Holy Basil'].s,e:d['Tulsi Holy Basil'].e,cl:d['Tulsi Holy Basil'].cl,temp:{min:18,max:40,ideal:28},humid:{min:40,max:85,ideal:65},rain:'medium',sun:'full',native:true,season:['summer','monsoon'],notes:'Pinch flowers to prolong leaves; sacred in Hindu tradition'};
+  EDB['Pansy']={d:d['Pansy'].d,z:d['Pansy'].z,m:d['Pansy'].m,s:d['Pansy'].s,e:d['Pansy'].e,cl:d['Pansy'].cl,temp:{min:5,max:22,ideal:15},humid:{min:40,max:75,ideal:55},rain:'medium',sun:'partial',native:false,season:['winter','autumn'],notes:'Best Oct–Feb in most of India; fade in peak summer'};
+  EDB['Western Juniper']={d:d['Western Juniper'].d,z:d['Western Juniper'].z,m:d['Western Juniper'].m,s:d['Western Juniper'].s,e:d['Western Juniper'].e,cl:d['Western Juniper'].cl,temp:{min:-10,max:40,ideal:22},humid:{min:10,max:60,ideal:30},rain:'low',sun:'full',native:false,season:['all'],notes:'Thrives in Leh/Ladakh; needs excellent drainage'};
+  EDB['Neem Tree']={d:d['Neem Tree'].d,z:d['Neem Tree'].z,m:d['Neem Tree'].m,s:d['Neem Tree'].s,e:d['Neem Tree'].e,cl:d['Neem Tree'].cl,temp:{min:15,max:45,ideal:30},humid:{min:20,max:85,ideal:50},rain:'low',sun:'full',native:true,season:['summer','monsoon','winter'],notes:'Needs no irrigation once established; ancient medicinal tree'};
+  EDB['Oak Tree']={d:d['Oak Tree'].d,z:d['Oak Tree'].z,m:d['Oak Tree'].m,s:d['Oak Tree'].s,e:d['Oak Tree'].e,cl:d['Oak Tree'].cl,temp:{min:-5,max:30,ideal:18},humid:{min:50,max:85,ideal:65},rain:'medium',sun:'full',native:false,season:['spring','autumn'],notes:'Slow-growing but long-lived; best in Himalayan regions'};
+  EDB['Prickly Pear Cactus']={d:d['Prickly Pear Cactus'].d,z:d['Prickly Pear Cactus'].z,m:d['Prickly Pear Cactus'].m,s:d['Prickly Pear Cactus'].s,e:d['Prickly Pear Cactus'].e,cl:d['Prickly Pear Cactus'].cl,temp:{min:10,max:45,ideal:28},humid:{min:10,max:60,ideal:30},rain:'low',sun:'full',native:false,season:['summer','autumn'],notes:'Edible pads (nopal) and fruit (prickly pear); remove spines before eating'};
+  EDB['Peace Lily']={d:d['Peace Lily'].d,z:d['Peace Lily'].z,m:d['Peace Lily'].m,s:d['Peace Lily'].s,e:d['Peace Lily'].e,cl:d['Peace Lily'].cl,temp:{min:18,max:30,ideal:24},humid:{min:50,max:85,ideal:70},rain:'medium',sun:'shade',native:false,season:['all'],notes:'Droops dramatically when thirsty; keeps air clean'};
+  EDB['Pine']={d:d['Pine'].d,z:d['Pine'].z,m:d['Pine'].m,s:d['Pine'].s,e:d['Pine'].e,cl:d['Pine'].cl,temp:{min:-20,max:25,ideal:10},humid:{min:40,max:80,ideal:55},rain:'medium',sun:'full',native:false,season:['all'],notes:'Prefers sandy soil; found above 1800m in Himalayas'};
+  EDB['Plumeria']={d:d['Plumeria'].d,z:d['Plumeria'].z,m:d['Plumeria'].m,s:d['Plumeria'].s,e:d['Plumeria'].e,cl:d['Plumeria'].cl,temp:{min:18,max:40,ideal:27},humid:{min:40,max:80,ideal:60},rain:'low',sun:'full',native:false,season:['summer','spring'],notes:'Goes dormant in winter; milky sap is skin irritant'};
+  EDB['Pomegranate']={d:d['Pomegranate'].d,z:d['Pomegranate'].z,m:d['Pomegranate'].m,s:d['Pomegranate'].s,e:d['Pomegranate'].e,cl:d['Pomegranate'].cl,temp:{min:10,max:40,ideal:25},humid:{min:30,max:70,ideal:45},rain:'low',sun:'full',native:true,season:['summer','autumn'],notes:'Native to Indian subcontinent; fruit ripens Sep–Feb'};
+  EDB['Pothos']={d:d['Pothos'].d,z:d['Pothos'].z,m:d['Pothos'].m,s:d['Pothos'].s,e:d['Pothos'].e,cl:d['Pothos'].cl,temp:{min:15,max:35,ideal:24},humid:{min:30,max:90,ideal:60},rain:'low',sun:'shade',native:false,season:['all'],notes:'Variegated leaves lose colour in low light; trim to propagate'};
+  EDB['Morning Glory']={d:d['Morning Glory'].d,z:d['Morning Glory'].z,m:d['Morning Glory'].m,s:d['Morning Glory'].s,e:d['Morning Glory'].e,cl:d['Morning Glory'].cl,temp:{min:18,max:35,ideal:26},humid:{min:50,max:85,ideal:65},rain:'medium',sun:'full',native:false,season:['summer','monsoon'],notes:'Flowers open at dawn; climbs 2–3m in one season'};
+  EDB['Jasmine']={d:d['Jasmine'].d,z:d['Jasmine'].z,m:d['Jasmine'].m,s:d['Jasmine'].s,e:d['Jasmine'].e,cl:d['Jasmine'].cl,temp:{min:15,max:35,ideal:25},humid:{min:50,max:85,ideal:65},rain:'medium',sun:'full',native:true,season:['spring','summer','monsoon'],notes:'Night-fragrant; commercial jasmine grown in Karnataka & Tamil Nadu'};
+  EDB['Joshua Tree']={d:d['Joshua Tree'].d,z:d['Joshua Tree'].z,m:d['Joshua Tree'].m,s:d['Joshua Tree'].s,e:d['Joshua Tree'].e,cl:d['Joshua Tree'].cl,temp:{min:0,max:45,ideal:25},humid:{min:5,max:50,ideal:20},rain:'low',sun:'full',native:false,season:['all'],notes:'Extremely slow-growing; lives 150+ years; not for humid India'};
+  EDB['Lavender']={d:d['Lavender'].d,z:d['Lavender'].z,m:d['Lavender'].m,s:d['Lavender'].s,e:d['Lavender'].e,cl:d['Lavender'].cl,temp:{min:5,max:35,ideal:20},humid:{min:25,max:65,ideal:40},rain:'low',sun:'full',native:false,season:['spring','summer'],notes:'Grows well in Kashmir & higher altitudes; hates waterlogging'};
+  EDB['Mango Tree']={d:d['Mango Tree'].d,z:d['Mango Tree'].z,m:d['Mango Tree'].m,s:d['Mango Tree'].s,e:d['Mango Tree'].e,cl:d['Mango Tree'].cl,temp:{min:18,max:40,ideal:30},humid:{min:40,max:85,ideal:60},rain:'medium',sun:'full',native:true,season:['summer','monsoon'],notes:"India's national fruit; needs dry winter for flowering"};
+  EDB['Mangrove Tree']={d:d['Mangrove Tree'].d,z:d['Mangrove Tree'].z,m:d['Mangrove Tree'].m,s:d['Mangrove Tree'].s,e:d['Mangrove Tree'].e,cl:d['Mangrove Tree'].cl,temp:{min:20,max:35,ideal:28},humid:{min:70,max:100,ideal:85},rain:'high',sun:'full',native:true,season:['all'],notes:'Only for coastal Sundarbans/Western Ghats; not for inland'};
+  EDB['Maple Tree']={d:d['Maple Tree'].d,z:d['Maple Tree'].z,m:d['Maple Tree'].m,s:d['Maple Tree'].s,e:d['Maple Tree'].e,cl:d['Maple Tree'].cl,temp:{min:-5,max:28,ideal:15},humid:{min:45,max:80,ideal:60},rain:'medium',sun:'partial',native:false,season:['autumn','spring'],notes:'Himalayan maple (Acer spp.) best for Indian cold hills'};
+  EDB['Fir Tree']={d:d['Fir Tree'].d,z:d['Fir Tree'].z,m:d['Fir Tree'].m,s:d['Fir Tree'].s,e:d['Fir Tree'].e,cl:d['Fir Tree'].cl,temp:{min:-20,max:20,ideal:6},humid:{min:50,max:90,ideal:70},rain:'medium',sun:'partial',native:false,season:['all'],notes:'Found above 2500m in Himalayas; pure forest tree'};
+  EDB['Fishhook Barrel Cactus']={d:d['Fishhook Barrel Cactus'].d,z:d['Fishhook Barrel Cactus'].z,m:d['Fishhook Barrel Cactus'].m,s:d['Fishhook Barrel Cactus'].s,e:d['Fishhook Barrel Cactus'].e,cl:d['Fishhook Barrel Cactus'].cl,temp:{min:5,max:45,ideal:28},humid:{min:10,max:50,ideal:25},rain:'low',sun:'full',native:false,season:['summer'],notes:'Survives extreme desert heat; avoid any frost'};
+  EDB['Money Plant']={d:d['Money Plant'].d,z:d['Money Plant'].z,m:d['Money Plant'].m,s:d['Money Plant'].s,e:d['Money Plant'].e,cl:d['Money Plant'].cl,temp:{min:15,max:35,ideal:24},humid:{min:30,max:85,ideal:60},rain:'low',sun:'shade',native:false,season:['all'],notes:'Grow in water or soil; change water weekly if water-grown'};
+  EDB['Tulip']={d:d['Tulip'].d,z:d['Tulip'].z,m:d['Tulip'].m,s:d['Tulip'].s,e:d['Tulip'].e,cl:d['Tulip'].cl,temp:{min:5,max:25,ideal:15},humid:{min:40,max:70,ideal:55},rain:'medium',sun:'full',native:false,season:['spring','winter'],notes:'Needs cold treatment (refrigerate bulbs 6–8 weeks before planting)'};
+  EDB['Ginger']={d:d['Ginger'].d,z:d['Ginger'].z,m:d['Ginger'].m,s:d['Ginger'].s,e:d['Ginger'].e,cl:d['Ginger'].cl,temp:{min:20,max:35,ideal:28},humid:{min:60,max:100,ideal:80},rain:'high',sun:'partial',native:true,season:['monsoon','summer'],notes:'Plant in early monsoon; harvest when leaves yellow'};
+  EDB['Grape Vine']={d:d['Grape Vine'].d,z:d['Grape Vine'].z,m:d['Grape Vine'].m,s:d['Grape Vine'].s,e:d['Grape Vine'].e,cl:d['Grape Vine'].cl,temp:{min:10,max:35,ideal:24},humid:{min:40,max:75,ideal:55},rain:'low',sun:'full',native:false,season:['spring','summer'],notes:'Commercially grown in Maharashtra & Karnataka; needs dry climate'};
+  EDB['Guava Tree']={d:d['Guava Tree'].d,z:d['Guava Tree'].z,m:d['Guava Tree'].m,s:d['Guava Tree'].s,e:d['Guava Tree'].e,cl:d['Guava Tree'].cl,temp:{min:15,max:40,ideal:28},humid:{min:50,max:85,ideal:70},rain:'medium',sun:'full',native:true,season:['summer','monsoon'],notes:'Allahabad Safeda is the most famous variety; crop in rainy season'};
+  EDB['Jade Plant']={d:d['Jade Plant'].d,z:d['Jade Plant'].z,m:d['Jade Plant'].m,s:d['Jade Plant'].s,e:d['Jade Plant'].e,cl:d['Jade Plant'].cl,temp:{min:10,max:35,ideal:22},humid:{min:20,max:70,ideal:40},rain:'low',sun:'full',native:false,season:['all'],notes:'Symbol of prosperity; can live decades; needs good drainage'};
+  EDB['Tea Plant']={d:d['Tea Plant'].d,z:d['Tea Plant'].z,m:d['Tea Plant'].m,s:d['Tea Plant'].s,e:d['Tea Plant'].e,cl:d['Tea Plant'].cl,temp:{min:10,max:30,ideal:20},humid:{min:65,max:95,ideal:80},rain:'high',sun:'partial',native:true,season:['spring','summer','monsoon'],notes:'Cultivated in Darjeeling, Assam, Nilgiris; needs acidic soil'};
+  EDB['Cedar']={d:d['Cedar'].d,z:d['Cedar'].z,m:d['Cedar'].m,s:d['Cedar'].s,e:d['Cedar'].e,cl:d['Cedar'].cl,temp:{min:-20,max:25,ideal:10},humid:{min:40,max:85,ideal:60},rain:'medium',sun:'full',native:false,season:['all'],notes:'Deodar cedar — India\'s national tree; found in western Himalayas'};
+  EDB['Cherry Blossom']={d:d['Cherry Blossom'].d,z:d['Cherry Blossom'].z,m:d['Cherry Blossom'].m,s:d['Cherry Blossom'].s,e:d['Cherry Blossom'].e,cl:d['Cherry Blossom'].cl,temp:{min:5,max:28,ideal:18},humid:{min:45,max:80,ideal:60},rain:'medium',sun:'full',native:false,season:['spring'],notes:'Japanese cherry (Prunus) blooms Feb–Mar in Kashmir & Sikkim'};
+  EDB['Coconut Palm']={d:d['Coconut Palm'].d,z:d['Coconut Palm'].z,m:d['Coconut Palm'].m,s:d['Coconut Palm'].s,e:d['Coconut Palm'].e,cl:d['Coconut Palm'].cl,temp:{min:20,max:40,ideal:30},humid:{min:60,max:100,ideal:80},rain:'high',sun:'full',native:true,season:['all'],notes:'Needs coastal humidity; thrives on Kerala & Tamil Nadu coasts'};
+  EDB['Coffee Plant']={d:d['Coffee Plant'].d,z:d['Coffee Plant'].z,m:d['Coffee Plant'].m,s:d['Coffee Plant'].s,e:d['Coffee Plant'].e,cl:d['Coffee Plant'].cl,temp:{min:15,max:30,ideal:22},humid:{min:65,max:95,ideal:78},rain:'high',sun:'shade',native:true,season:['all'],notes:'Arabica in Karnataka/Kerala hills; needs 150–200cm rainfall annually'};
+  EDB['Colocasia']={d:d['Colocasia'].d,z:d['Colocasia'].z,m:d['Colocasia'].m,s:d['Colocasia'].s,e:d['Colocasia'].e,cl:d['Colocasia'].cl,temp:{min:18,max:35,ideal:26},humid:{min:60,max:100,ideal:80},rain:'high',sun:'shade',native:true,season:['monsoon','summer'],notes:'Arbi/taro corm edible; needs constant moisture; avoid cold'};
+  EDB['Daffodil']={d:d['Daffodil'].d,z:d['Daffodil'].z,m:d['Daffodil'].m,s:d['Daffodil'].s,e:d['Daffodil'].e,cl:d['Daffodil'].cl,temp:{min:5,max:22,ideal:14},humid:{min:40,max:75,ideal:55},rain:'medium',sun:'full',native:false,season:['spring','winter'],notes:'Plant bulbs Oct–Nov; cold treatment needed; Sikkim & hills'};
+  EDB['Daisy']={d:d['Daisy'].d,z:d['Daisy'].z,m:d['Daisy'].m,s:d['Daisy'].s,e:d['Daisy'].e,cl:d['Daisy'].cl,temp:{min:8,max:28,ideal:18},humid:{min:35,max:75,ideal:55},rain:'low',sun:'full',native:false,season:['winter','spring','autumn'],notes:'Common in temperate Indian hills; self-seeding; easy to grow'};
+  EDB['Date Palm']={d:d['Date Palm'].d,z:d['Date Palm'].z,m:d['Date Palm'].m,s:d['Date Palm'].s,e:d['Date Palm'].e,cl:d['Date Palm'].cl,temp:{min:15,max:45,ideal:32},humid:{min:10,max:60,ideal:25},rain:'low',sun:'full',native:false,season:['summer','autumn'],notes:'Commercial cultivation in Rajasthan; needs hot dry climate'};
+  EDB['Snake Plant']={d:d['Snake Plant'].d,z:d['Snake Plant'].z,m:d['Snake Plant'].m,s:d['Snake Plant'].s,e:d['Snake Plant'].e,cl:d['Snake Plant'].cl,temp:{min:15,max:40,ideal:26},humid:{min:25,max:80,ideal:50},rain:'low',sun:'shade',native:false,season:['all'],notes:'NASA-approved air purifier; rot if overwatered; near-indestructible'};
+  EDB['Desert Rose']={d:d['Desert Rose'].d,z:d['Desert Rose'].z,m:d['Desert Rose'].m,s:d['Desert Rose'].s,e:d['Desert Rose'].e,cl:d['Desert Rose'].cl,temp:{min:18,max:45,ideal:30},humid:{min:15,max:60,ideal:30},rain:'low',sun:'full',native:false,season:['summer','spring'],notes:'Adenium obesum; stunning red/pink flowers; needs excellent drainage'};
+  EDB['Fern']={d:d['Fern'].d,z:d['Fern'].z,m:d['Fern'].m,s:d['Fern'].s,e:d['Fern'].e,cl:d['Fern'].cl,temp:{min:15,max:30,ideal:22},humid:{min:65,max:100,ideal:82},rain:'high',sun:'shade',native:true,season:['monsoon','all'],notes:'Perfect for shaded outdoor spaces in humid coastal areas'};
+  EDB['Cactus']={d:d['Cactus'].d,z:d['Cactus'].z,m:d['Cactus'].m,s:d['Cactus'].s,e:d['Cactus'].e,cl:d['Cactus'].cl,temp:{min:10,max:50,ideal:30},humid:{min:10,max:55,ideal:25},rain:'low',sun:'full',native:false,season:['summer','autumn'],notes:'Water only when soil is bone dry; avoid monsoon rains'};
+  EDB['Aloe Vera']={d:d['Aloe Vera'].d,z:d['Aloe Vera'].z,m:d['Aloe Vera'].m,s:d['Aloe Vera'].s,e:d['Aloe Vera'].e,cl:d['Aloe Vera'].cl,temp:{min:15,max:40,ideal:26},humid:{min:25,max:70,ideal:40},rain:'low',sun:'full',native:false,season:['all'],notes:'Gel for burns & skin; grows everywhere in India; needs drainage'};
+  EDB['Apple Tree']={d:d['Apple Tree'].d,z:d['Apple Tree'].z,m:d['Apple Tree'].m,s:d['Apple Tree'].s,e:d['Apple Tree'].e,cl:d['Apple Tree'].cl,temp:{min:-10,max:28,ideal:15},humid:{min:40,max:80,ideal:58},rain:'medium',sun:'full',native:false,season:['spring','autumn'],notes:'Kashmir & Himachal ideal; needs 1000+ chilling hours'};
+  EDB['Areca Palm']={d:d['Areca Palm'].d,z:d['Areca Palm'].z,m:d['Areca Palm'].m,s:d['Areca Palm'].s,e:d['Areca Palm'].e,cl:d['Areca Palm'].cl,temp:{min:18,max:40,ideal:28},humid:{min:50,max:90,ideal:70},rain:'high',sun:'partial',native:false,season:['all'],notes:'Needs daily watering in summer; excellent indoor air purifier'};
+  EDB['Bamboo']={d:d['Bamboo'].d,z:d['Bamboo'].z,m:d['Bamboo'].m,s:d['Bamboo'].s,e:d['Bamboo'].e,cl:d['Bamboo'].cl,temp:{min:15,max:40,ideal:27},humid:{min:55,max:100,ideal:75},rain:'high',sun:'full',native:true,season:['all'],notes:'Runners need root barriers; clumping varieties better for gardens'};
+  EDB['Banana Plant']={d:d['Banana Plant'].d,z:d['Banana Plant'].z,m:d['Banana Plant'].m,s:d['Banana Plant'].s,e:d['Banana Plant'].e,cl:d['Banana Plant'].cl,temp:{min:18,max:40,ideal:30},humid:{min:60,max:95,ideal:78},rain:'high',sun:'full',native:true,season:['all'],notes:'Pseudostem dies after fruiting; plant pups for next crop'};
+  EDB['Birch Tree']={d:d['Birch Tree'].d,z:d['Birch Tree'].z,m:d['Birch Tree'].m,s:d['Birch Tree'].s,e:d['Birch Tree'].e,cl:d['Birch Tree'].cl,temp:{min:-20,max:25,ideal:8},humid:{min:45,max:85,ideal:60},rain:'medium',sun:'full',native:false,season:['spring','autumn'],notes:'Bhojpatra (Betula utilis) found in Himalayas above 3000m'};
+  EDB['Bougainvillea']={d:d['Bougainvillea'].d,z:d['Bougainvillea'].z,m:d['Bougainvillea'].m,s:d['Bougainvillea'].s,e:d['Bougainvillea'].e,cl:d['Bougainvillea'].cl,temp:{min:15,max:42,ideal:28},humid:{min:20,max:70,ideal:40},rain:'low',sun:'full',native:false,season:['summer','spring','autumn'],notes:'Vivid bracts in pink/purple/orange; neglect produces more flowers'};
+  EDB['Rice Plant']={d:d['Rice Plant'].d,z:d['Rice Plant'].z,m:d['Rice Plant'].m,s:d['Rice Plant'].s,e:d['Rice Plant'].e,cl:d['Rice Plant'].cl,temp:{min:20,max:38,ideal:30},humid:{min:65,max:100,ideal:85},rain:'high',sun:'full',native:true,season:['monsoon'],notes:'Kharif crop in India; transplant Jun–Jul; harvest Oct–Nov'};
+  EDB['Chinese Evergreen']={d:d['Chinese Evergreen'].d,z:d['Chinese Evergreen'].z,m:d['Chinese Evergreen'].m,s:d['Chinese Evergreen'].s,e:d['Chinese Evergreen'].e,cl:d['Chinese Evergreen'].cl,temp:{min:15,max:35,ideal:25},humid:{min:40,max:85,ideal:65},rain:'medium',sun:'shade',native:false,season:['all'],notes:'Thrives in all Indian homes; avoid direct AC drafts'};
+
+  /* ── NEW: Plants with GLB files not yet in EDB ── */
+  EDB['Pine Tree']={d:"Evergreen conifer with needle-like foliage, common in cold mountainous regions.",z:"cold",m:"plants/pine_tree.glb",s:"4 4 4",e:"🌲",cl:"cz",temp:{min:-20,max:25,ideal:10},humid:{min:40,max:80,ideal:55},rain:'medium',sun:'full',native:false,season:['all'],notes:'Similar to Pine; found in temperate and cold hilly regions'};
+  EDB['Casuarina']={d:"Tall feathery Australian tree naturalised across Indian coasts and plains.",z:"tropical",m:"plants/casuarina_cone_-_photogrammetry.glb",s:"3 4 3",e:"🌿",cl:"tz",temp:{min:15,max:40,ideal:28},humid:{min:40,max:85,ideal:60},rain:'medium',sun:'full',native:false,season:['all'],notes:'Excellent coastal windbreaker; fixes nitrogen in soil'};
+  EDB['Barley']={d:"Ancient cereal grain cultivated in India's Rajasthan and Punjab regions.",z:"temperate",m:"plants/cc0__barley_hordeum_vulgare.glb",s:"0.6 0.6 0.6",e:"🌾",cl:"tmz",temp:{min:5,max:30,ideal:18},humid:{min:25,max:65,ideal:45},rain:'low',sun:'full',native:false,season:['winter'],notes:'Rabi crop sown Oct–Nov; harvest Mar–Apr in North India'};
+  EDB['Marsh Marigold']={d:"Bright yellow wetland flower blooming in spring across cold marshy regions.",z:"humid",m:"plants/marsh_marigold_high-poly.glb",s:"0.3 0.3 0.3",e:"🌼",cl:"hz",temp:{min:5,max:25,ideal:15},humid:{min:60,max:100,ideal:80},rain:'high',sun:'partial',native:false,season:['spring','summer'],notes:'Native to Sikkim Himalayas; loves waterlogged soil'};
+  EDB['Pincushion Euphorbia']={d:"Compact succulent with spiny stems and showy red bracts.",z:"desert",m:"plants/pincushion_euphorbia.glb",s:"0.4 0.4 0.4",e:"🌵",cl:"dz",temp:{min:15,max:45,ideal:28},humid:{min:15,max:55,ideal:30},rain:'low',sun:'full',native:false,season:['summer','spring'],notes:'Euphorbia knuthii; caution — milky sap is toxic and a skin irritant'};
+  EDB['Rosemary Willow']={d:"Aromatic herb with needle-like leaves, used in cooking and traditional medicine.",z:"temperate",m:"plants/realistic_hd_rosemary_willow_9199.glb",s:"0.5 0.5 0.5",e:"🌿",cl:"tmz",temp:{min:5,max:30,ideal:18},humid:{min:30,max:70,ideal:50},rain:'medium',sun:'full',native:false,season:['spring','summer','autumn'],notes:'Grows in temperate Indian hills; drought-tolerant once established'};
+  EDB['Dried Sagebrush']={d:"Aromatic silver-green shrub typical of arid and semi-arid regions.",z:"desert",m:"plants/dried_sagebrush.glb",s:"0.8 0.8 0.8",e:"🌿",cl:"dz",temp:{min:5,max:40,ideal:24},humid:{min:15,max:55,ideal:30},rain:'low',sun:'full',native:false,season:['all'],notes:'Artemisia species; found in western Indian deserts; drought-deciduous'};
+  EDB['Jalapeno Plant']={d:"Hot pepper plant producing medium-heat green to red chilli peppers.",z:"tropical",m:"plants/jalapeno_plant.glb",s:"0.4 0.4 0.4",e:"🌶️",cl:"tz",temp:{min:18,max:35,ideal:26},humid:{min:40,max:80,ideal:60},rain:'medium',sun:'full',native:false,season:['summer','monsoon'],notes:'Chilli is central to Indian cuisine; harvest when green or red'};
+  EDB['Pandanus']={d:"Tropical palm-like tree with fragrant screw pine flowers and stilt roots.",z:"tropical",m:"plants/pandanus.glb",s:"2 3 2",e:"🌴",cl:"tz",temp:{min:20,max:38,ideal:28},humid:{min:60,max:100,ideal:80},rain:'high',sun:'full',native:true,season:['all'],notes:'Kewda flower from Pandanus used in Indian perfumery; found in coastal India'};
+})();
+
+/* Indian seasons */
+var SEASONS={
+  winter:[11,0,1],spring:[2,3],summer:[4,5],monsoon:[6,7,8],autumn:[9,10]
+};
+function getCurrentSeason(){
+  var m=new Date().getMonth();
+  for(var s in SEASONS)if(SEASONS[s].indexOf(m)!==-1)return s;
+  return 'winter';
+}
+function getRainScore(desc){
+  desc=(desc||'').toLowerCase();
+  if(/heavy rain|shower|downpour|torrential/.test(desc))return 3;
+  if(/light rain|drizzle|rain/.test(desc))return 2;
+  if(/mist|fog|humidity/.test(desc))return 1;
+  return 0;
+}
+
+/* Weighted scoring: temperature 35%, humidity 25%, rainfall 20%, season 20% */
+function scorePlant(plant,temp,humid,rainScore,season){
+  var wT=35,wH=25,wR=20,wS=20;
+  var sT=0,sH=0,sR=0,sS=0;
+
+  // Temperature (35%)
+  if(temp>=plant.temp.min&&temp<=plant.temp.max){
+    var mid=(plant.temp.min+plant.temp.max)/2;
+    var range=plant.temp.max-plant.temp.min;
+    var idealDiff=Math.abs(temp-plant.temp.ideal);
+    var maxDiff=range/2||5;
+    sT=Math.round(100*(1-idealDiff/maxDiff*0.5));
+    if(sT>100)sT=100;if(sT<40)sT=40;
+  } else {
+    var outside=Math.min(Math.abs(temp-plant.temp.min),Math.abs(temp-plant.temp.max));
+    sT=Math.max(0,Math.round(30*(1-outside/10)));
+  }
+
+  // Humidity (25%)
+  if(humid>=plant.humid.min&&humid<=plant.humid.max){
+    var rangeH=plant.humid.max-plant.humid.min;
+    var maxDiffH=rangeH/2||10;
+    var idealDiffH=Math.abs(humid-plant.humid.ideal);
+    sH=Math.round(100*(1-idealDiffH/maxDiffH*0.5));
+    if(sH>100)sH=100;if(sH<40)sH=40;
+  } else {
+    var outsideH=Math.min(Math.abs(humid-plant.humid.min),Math.abs(humid-plant.humid.max));
+    sH=Math.max(0,Math.round(30*(1-outsideH/15)));
+  }
+
+  // Rainfall (20%)
+  var plantRain={'low':1,'medium':2,'high':3}[plant.rain]||2;
+  var diff=Math.abs(rainScore-plantRain);
+  sR=diff===0?100:diff===1?65:25;
+
+  // Seasonal (20%)
+  if(plant.season.indexOf('all')!==-1){
+    sS=100;
+  } else if(plant.season.indexOf(season)!==-1){
+    sS=100;
+  } else {
+    var adj={'winter':'autumn','autumn':'winter','spring':'summer','summer':'monsoon','monsoon':'autumn'};
+    sS=plant.season.indexOf(adj[season])!==-1?60:20;
+  }
+
+  return Math.round((wT*sT+wH*sH+wR*sR+wS*sS)/100);
+}
+
+function getMatchBadge(score){
+  if(score>=85)return'<span style="background:#d4ede0;color:#1a5c2e;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px;">★ Top Match</span>';
+  if(score>=70)return'<span style="background:#e8f5e9;color:#2e7d32;font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:6px;">'+score+'%</span>';
+  if(score>=50)return'<span style="background:#fff8e1;color:#f57f17;font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:6px;">'+score+'%</span>';
+  return'<span style="background:#fce4ec;color:#c62828;font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:6px;">'+score+'%</span>';
+}
+
+function getZoneLabel(zone,season){
+  var labels={tropical:'Tropical',desert:'Desert',temperate:'Temperate',cold:'Alpine',humid:'Humid',indoor:'Indoor'};
+  return labels[zone]||zone;
+}
+
+function detectPrimaryZone(temp,humid,desc,rainScore){
+  var cat='temperate';
+  if(temp<5)cat='cold';
+  else if(temp<18){cat=(rainScore>=2)?'humid':'temperate';}
+  else if(temp<28){
+    if(rainScore>=2)cat='humid';
+    else if(humid<40)cat='temperate';
+    else cat='tropical';
+  } else {
+    if(humid<35)cat='desert';
+    else if(rainScore>=2||humid>80)cat='humid';
+    else cat='tropical';
+  }
+  return cat;
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  var sel=document.getElementById('csel');
+  CITIES.slice().sort().forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+});
+
+function getWeather(){
+  var city=document.getElementById('csel').value;
+  var wr=document.getElementById('wRes'),sp=document.getElementById('spinner');
+  wr.classList.remove('show');sp.style.display='block';
+  if(!city){alert('Please select a city.');sp.style.display='none';return;}
+  
+  // Use Open-Meteo API (free, no key needed) with fallback error handling
+  fetchWeatherData(city).then(function(d){
+    sp.style.display='none';
+    if(!d){wr.innerHTML='⚠️ Could not get weather for '+city+'. Please try another city.';wr.classList.add('show');return;}
+    var t=d.temp,h=d.humid,desc=d.desc,icon=d.icon;
+    var rainScore=getRainScore(desc);
+    var season=getCurrentSeason();
+    var zone=detectPrimaryZone(t,h,desc,rainScore);
+    wr.innerHTML='<span style="font-size:1rem;margin-right:8px;">'+icon+'</span><b>'+d.name+'</b> &nbsp; '+Math.round(t)+'&#176;C &nbsp; '+h+'% humidity &nbsp; '+desc+' &nbsp; <span style="background:var(--green-pill);color:var(--green-pill-text);font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.06em;">'+season+'</span>';
+    wr.classList.add('show');
+    showScoredPlants(t,h,rainScore,season,zone,d.name);
+  }).catch(function(err){sp.style.display='none';wr.innerHTML='⚠️ Network error. '+err;wr.classList.add('show');});
+}
+
+function fetchWeatherData(city){
+  // Geo to coordinates
+  return fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+',India&count=1&language=en&format=json')
+    .then(function(r){return r.json();})
+    .then(function(gd){
+      if(!gd.results||gd.results.length===0)return null;
+      var loc=gd.results[0];
+      // Get weather
+      return fetch('https://api.open-meteo.com/v1/forecast?latitude='+loc.latitude+'&longitude='+loc.longitude+'&current=temperature_2m,relative_humidity_2m,weather_code&timezone=auto')
+        .then(function(r){return r.json();})
+        .then(function(wd){
+          var c=wd.current;
+          var icons=['☀️','🌤️','☁️','🌦️','🌧️','⛈️'];
+          var icon=icons[Math.min(c.weather_code,icons.length-1)];
+          var desc=getWeatherDescription(c.weather_code);
+          return {name:loc.name,temp:c.temperature_2m,humid:c.relative_humidity_2m,desc:desc,icon:icon};
+        });
+    })
+    .catch(function(e){console.error('Weather fetch error:',e);return null;});
+}
+
+function getWeatherDescription(code){
+  if(code<=1)return 'Clear';
+  if(code===2||code===3)return 'Cloudy';
+  if(code===45||code===48)return 'Foggy';
+  if(code>=51&&code<=67)return 'Light Rain';
+  if(code>=71&&code<=77)return 'Snow';
+  if(code>=80&&code<=82)return 'Heavy Rain';
+  if(code===85||code===86)return 'Thunderstorm';
+  return 'Partly Cloudy';
+}
+
+
+function showScoredPlants(temp,humid,rainScore,season,zone,city){
+  var pg=document.getElementById('pGrid'),rm=document.getElementById('rMeta'),rt=document.getElementById('rTitle'),zt=document.getElementById('zTag');
+  pg.innerHTML='';rm.style.display='flex';
+
+  var scored=[];
+  for(var name in EDB){
+    var p=EDB[name];
+    var sc=scorePlant(p,temp,humid,rainScore,season);
+    scored.push({name:name,plant:p,score:sc});
+  }
+
+  scored.sort(function(a,b){return b.score-a.score;});
+
+  var topScore=scored[0]?scored[0].score:0;
+  var shown=0;
+
+  scored.forEach(function(item,i){
+    var p=item.plant;
+    var sc=item.score;
+    var c=document.createElement('div');c.className='pc';
+    var badge=shown===0&&sc===topScore&&topScore>=50?getMatchBadge(100):getMatchBadge(sc);
+    var nativeTag=p.native?'<span style="background:#e8f5e9;color:#2e7d32;font-size:.58rem;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:4px;">IN</span>':'';
+    var url='ar-view.html?plant='+encodeURIComponent(item.name)+'&model='+encodeURIComponent(p.m)+'&scale='+encodeURIComponent(p.s);
+    c.innerHTML='<div class="p-img '+p.cl+'"><div class="p-ztag">'+p.z+'</div>'+p.e+'</div><div class="p-body"><div class="p-name">'+item.name+nativeTag+'</div><div style="margin-bottom:6px;">'+badge+'</div><p class="p-desc">'+p.d+'</p><div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;">&#127793; '+p.temp.min+'–'+p.temp.max+'&#176;C &nbsp; &#128167; '+p.humid.min+'–'+p.humid.max+'%</div><div style="font-size:.73rem;color:var(--muted);margin-bottom:10px;">'+p.notes+'</div><a class="p-ar" href="'+url+'" target="_blank">View AR Specimen</a></div>';
+    pg.appendChild(c);
+    setTimeout(function(){c.classList.add('show');},40+i*40);
+    shown++;
+  });
+
+  rt.textContent=scored.length+' specimens analysed for '+city;
+  zt.textContent=getZoneLabel(zone,season)+' · '+season.charAt(0).toUpperCase()+season.slice(1);
+}
+</script>
+</body>
+</html>
+=======
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌿 Climate-wise Plant Database (India)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-green:#7fff00;
+      --dark-bg:rgba(0,0,0,0.85);
+      --dark-bg-light:rgba(0,0,0,0.7);
+      --text-color:#ffffff;
+      --accent-color:#a1ff4d;
+    }
+    body {
+      margin:0;font-family:'Poppins',sans-serif;
+      background:url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1920&h=1080&fit=crop') no-repeat center/cover fixed;
+      color:var(--text-color);display:flex;flex-direction:column;align-items:center;padding:20px;min-height:100vh;
+    }
+    header {
+      background:var(--dark-bg);padding:20px 40px;border-radius:12px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.5);margin-bottom:30px;width:100%;max-width:1000px;text-align:center;
+    }
+    header h1 {font-size:2.4em;color:var(--primary-green);margin:0;text-shadow:0 0 10px rgba(127,255,0,0.5);}
+    .weather-box {
+      background:var(--dark-bg-light);padding:25px;border-radius:12px;
+      width:100%;max-width:450px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.4);margin-bottom:25px;
+    }
+    .weather-box input, .weather-box select { /* Added select for dropdown */
+      width:75%;padding:12px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.3);
+      border-radius:8px;background:rgba(255,255,255,0.1);color:var(--text-color);
+      /* Style for select element */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+      padding-right: 30px; /* Make space for the arrow */
+    }
+    .weather-box option {
+        color: #333; /* Dark text for options */
+        background: #eee; /* Light background for options */
+    }
+    .weather-box button {
+      padding:12px 20px;border:none;border-radius:8px;background:var(--primary-green);
+      color:#000;font-weight:700;cursor:pointer;transition:0.3s;
+    }
+    .weather-box button:hover {background:var(--accent-color);}
+    #weatherResult {margin-top:12px;font-size:1.05em;}
+    #loadingSpinner {
+      display:none;border:4px solid rgba(255,255,255,0.3);
+      border-top:4px solid var(--primary-green);border-radius:50%;
+      width:28px;height:28px;animation:spin 1s linear infinite;margin:12px auto;
+    }
+    @keyframes spin {to {transform:rotate(360deg);}}
+    .plant-list {
+      display:flex;flex-wrap:wrap;justify-content:center;gap:18px;max-width:1200px;
+    }
+    .plant {
+      background:var(--dark-bg-light);padding:20px;border-radius:12px;width:300px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.4);transition:0.3s;
+    }
+    .plant:hover {transform:translateY(-4px);background:var(--dark-bg);}
+    .plant h3 {margin:0;color:var(--primary-green);}
+    .plant p {margin:8px 0;color:#e6e6e6;}
+    .ar-button {
+      display:inline-block;margin-top:6px;padding:8px 12px;border-radius:8px;
+      background:var(--primary-green);color:#000;font-weight:700;text-decoration:none;
+    }
+    .ar-button:hover {background:var(--accent-color);}
+  </style>
+</head>
+<body>
+<header><h1>🌿 Climate-wise Plant Suggestion</h1></header>
+
+<div class="weather-box">
+  <select id="citySelect">
+    <option value="">Select a city...</option>
+  </select>
+  <button onclick="getWeather()">Get Weather & Plants</button>
+  <div id="loadingSpinner"></div>
+  <div id="weatherResult"></div>
+</div>
+
+<div id="plantList" class="plant-list">
+  <div class="plant"><h3>Welcome!</h3><p>Select a city from the dropdown to get climate-based plant suggestions for India.</p></div>
+</div>
+
+<script>
+const apiKey = "22163b8cddb205bf1ae045e60d2f5e18"; // Replace with YOUR OpenWeatherMap API Key
+const defaultCountry = "IN";
+
+// --- More than 150 Indian cities ---
+const indianCities = [
+    "Agra", "Ahmedabad", "Aizawl", "Ajmer", "Alappuzha", "Aligarh", "Allahabad", "Ambala", "Ambikapur", "Amravati",
+    "Amritsar", "Anantapur", "Ankleshwar", "Asansol", "Aurangabad", "Ayodhya", "Bagaha", "Bahraich", "Ballia", "Bengaluru",
+    "Bareilly", "Bathinda", "Belgaum", "Bellary", "Bettiah", "Bhagalpur", "Bharatpur", "Bhavnagar", "Bhilai", "Bhiwandi",
+    "Bhopal", "Bhubaneswar", "Bidar", "Bikaner", "Bilaspur", "Bokaro", "Calicut", "Chandigarh", "Chennai", "Chinsura",
+    "Chittoor", "Coimbatore", "Cuttack", "Darbhanga", "Dehradun", "Delhi", "Devanagere", "Dhanbad", "Dhule", "Dibrugarh",
+    "Dindigul", "Dispur", "Durgapur", "Erode", "Etawah", "Faridabad", "Firozabad", "Gandhinagar", "Gangtok", "Gaya",
+    "Ghaziabad", "Gopalpur", "Gorakhpur", "Gulbarga", "Guntur", "Gurgaon", "Guwahati", "Gwalior", "Haldia", "Hapur",
+    "Haridwar", "Hospet", "Howrah", "Hubli", "Hyderabad", "Imphal", "Indore", "Jabalpur", "Jaipur", "Jalandhar",
+    "Jamalpur", "Jammu", "Jamnagar", "Jamshedpur", "Jhansi", "Jodhpur", "Kakinada", "Kalyan", "Kanchipuram", "Kanpur",
+    "Karimnagar", "Karnal", "Kochi", "Kolhapur", "Kolkata", "Kollam", "Kota", "Kottayam", "Kurnool", "Latur",
+    "Loni", "Lucknow", "Ludhiana", "Madurai", "Mahesana", "Malegaon", "Mangaluru", "Mathura", "Meerut", "Mira-Bhayandar",
+    "Mirzapur", "Moradabad", "Mumbai", "Muzaffarnagar", "Muzaffarpur", "Mysore", "Nagercoil", "Nagpur", "Nalgonda", "Nanded",
+    "Nashik", "Nellore", "New Delhi", "Nizamabad", "Noida", "Ongole", "Palwal", "Panipat", "Panvel", "Patiala",
+    "Patna", "Pilibhit", "Pondicherry", "Porbandar", "Prayagraj", "Pune", "Puri", "Raichur", "Raipur", "Rajahmundry",
+    "Rajkot", "Rampur", "Ranchi", "Ratlam", "Rewa", "Rohtak", "Rourkela", "Sagar", "Saharanpur", "Salem",
+    "Sambalpur", "Sangli", "Satara", "Satna", "Secunderabad", "Shahjahanpur", "Shimla", "Shivamogga", "Shivpuri", "Siliguri",
+    "Singrauli", "Srinagar", "Sultanpur", "Surat", "Thane", "Thanjavur", "Thiruvananthapuram", "Thoothukudi", "Thrissur", "Tiruchirappalli",
+    "Tirunelveli", "Tirupati", "Udaipur", "Ujjain", "Ulhasnagar", "Vadodara", "Valsad", "Varanasi", "Vasai", "Vellore",
+    "Vijayawada", "Visakhapatnam", "Vizianagaram", "Warangal"
+];
+
+
+// Populate the city dropdown
+document.addEventListener('DOMContentLoaded', () => {
+    const citySelect = document.getElementById('citySelect');
+    indianCities.sort().forEach(city => { // Sort cities alphabetically
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+    });
+});
+
+
+/* --- Your 80 Plant Database --- */
+// IMPORTANT: Fill in the correct descriptions, categories, model paths, and scales for YOUR 80 plants.
+// The GLB filenames used here must exactly match what you have in your 'plants/' folder.
+const plantDatabase = {
+    "Wheat Plant": { desc: "Staple crop, best in cool, dry climates.", cat: "temperate", model: "wheat__free.glb", scale: "0.8 0.8 0.8" },
+    "Frangipani Tree": { desc: "Tropical flowering tree with fragrant blossoms.", cat: "tropical", model: "realistic_hd_frangipani_tree_150.glb", scale: "2.5 2.5 2.5" },
+    "Rosemary Willow": { desc: "Shrub with narrow leaves, often used ornamentally.", cat: "temperate", model: "realistic_hd_rosemary_willow_9199.glb", scale: "1.5 1.5 1.5" },
+    "Rice Plant": { desc: "Primary food crop, thrives in warm, wet conditions.", cat: "humid", model: "rice_plant.glb", scale: "0.7 0.7 0.7" },
+    "Rose": { desc: "Classic flowering shrub, suitable for temperate gardens.", cat: "temperate", model: "rose_flower.glb", scale: "0.5 0.5 0.5" },
+    "Rubber Plant": { desc: "Large-leafed indoor tree, good for air purification.", cat: "indoor", model: "rubber_plant_fig.glb", scale: "1.4 1.4 1.4" },
+    "Snowdrop": { desc: "Small, white bell-shaped flowers, blooms in late winter/early spring.", cat: "cold", model: "snowdrop_pack_lowpoly_gameready_lod.glb", scale: "0.2 0.2 0.2" },
+    "Spider Plant": { desc: "Easy-care indoor plant, produces plantlets.", cat: "indoor", model: "spider_plant.glb", scale: "0.4 0.4 0.4" },
+    "Spruce Tree": { desc: "Coniferous evergreen, common in colder regions.", cat: "cold", model: "spruce_tree_-_low_poly.glb", scale: "4 4 4" },
+    "Sugarcane": { desc: "Tall grass crop for tropical humidity.", cat: "humid", model: "sugarcane.glb", scale: "2 2 2" }, // Using the non-(1) version
+    "Sunflower": { desc: "Follows the sun, grows well in warm, sunny climates.", cat: "temperate", model: "sunflower.glb", scale: "1.2 1.2 1.2" },
+    "Taro": { desc: "Tropical root crop, needs moist soil.", cat: "humid", model: "taro.glb", scale: "0.6 0.6 0.6" },
+    "Thyme": { desc: "Fragrant herb, prefers dry, sunny conditions.", cat: "temperate", model: "thyme_bush.glb", scale: "0.25 0.25 0.25" },
+    "Tulsi (Holy Basil)": { desc: "Sacred herb with medicinal properties, warm climates.", cat: "tropical", model: "tulsi_tree_on_a_cement_tub.glb", scale: "0.4 0.4 0.4" },
+    "Pansy Primrose": { desc: "Colorful flowering plant, suited for temperate gardens.", cat: "temperate", model: "violaceae__primula_pansy_flower__primrose.glb", scale: "0.3 0.3 0.3" },
+    "Western Juniper": { desc: "Hardy evergreen shrub or small tree, tolerates dry conditions.", cat: "desert", model: "western_juniper.glb", scale: "2 2 2" },
+    "Neem Tree": { desc: "Highly valued medicinal tree, drought-tolerant.", cat: "tropical", model: "neem_tree.glb", scale: "3.5 3.5 3.5" },
+    "Oak Tree": { desc: "Large deciduous tree, found in temperate zones.", cat: "temperate", model: "oak_tree.glb", scale: "4 4 4" },
+    "Prickly Pear Cactus": { desc: "Succulent cactus with edible pads and fruits.", cat: "desert", model: "opuntia_prickly_pear_cactus.glb", scale: "1 1 1" },
+    "Pandanus": { desc: "Tropical plant with long, strap-like leaves.", cat: "tropical", model: "pandanus.glb", scale: "1.5 1.5 1.5" }, // Using the non-(1) version
+    "Peace Lily": { desc: "Popular indoor plant with white spathes, air purifying.", cat: "indoor", model: "peace_lily.glb", scale: "0.5 0.5 0.5" },
+    "Pincushion Euphorbia": { desc: "Small, spherical succulent, resembles a pincushion.", cat: "desert", model: "pincushion_euphorbia.glb", scale: "0.3 0.3 0.3" },
+    "Pine": { desc: "General term for coniferous trees, tolerant of cold.", cat: "cold", model: "pine.glb", scale: "4 4 4" }, // Using 'pine' for general pine tree
+    "Plumeria": { desc: "Fragrant tropical flower, also known as Frangipani.", cat: "tropical", model: "plumeria_flower.glb", scale: "0.9 0.9 0.9" },
+    "Pomegranate": { desc: "Fruit plant, thrives in semi-arid to temperate zones.", cat: "temperate", model: "pomegranatepunica_granatum_l..glb", scale: "1.5 1.5 1.5" },
+    "Pothos Plant": { desc: "Trailing indoor plant, easy to grow and propagate.", cat: "indoor", model: "pothos_plant.glb", scale: "0.8 0.8 0.8" },
+    "Morning Glory": { desc: "Climbing plant with vibrant, trumpet-shaped flowers.", cat: "tropical", model: "morning_glory_dense_plant_points_challenge.glb", scale: "1 1 1" },
+    "Jasmine": { desc: "Fragrant flowering vine, popular in warm climates.", cat: "tropical", model: "jasmine.glb", scale: "0.7 0.7 0.7" },
+    "Joshua Tree": { desc: "Iconic desert plant, slow-growing and long-lived.", cat: "desert", model: "joshua_trees.glb", scale: "3 3 3" },
+    "Lavender": { desc: "Aromatic herb, thrives in sunny, dry Mediterranean climates.", cat: "temperate", model: "lavender.glb", scale: "0.4 0.4 0.4" },
+    "Mango Tree": { desc: "Popular tropical fruit tree, needs warm climate.", cat: "tropical", model: "mango_tree (1).glb", scale: "3 3 3" }, // Using (1) version to differentiate if needed, else choose one.
+    "Mangrove Tree": { desc: "Salt-tolerant tree, vital for coastal ecosystems in tropics.", cat: "humid", model: "mangrove_tree.glb", scale: "3.5 3.5 3.5" },
+    "Maple Tree": { desc: "Deciduous tree known for its autumn foliage, temperate zones.", cat: "temperate", model: "maple_tree.glb", scale: "4 4 4" },
+    "Marsh Marigold": { desc: "Bright yellow flowers, grows in wet, marshy areas.", cat: "temperate", model: "marsh_marigold_high-poly.glb", scale: "0.3 0.3 0.3" },
+    "Fir Tree": { desc: "Evergreen coniferous tree, common in colder, mountainous regions.", cat: "cold", model: "fir_tree.glb", scale: "4 4 4" },
+    "Fishhook Barrel Cactus": { desc: "Large, cylindrical cactus with prominent spines.", cat: "desert", model: "fishhook_barrel_cactus.glb", scale: "0.8 0.8 0.8" },
+    "Money Plant (Pothos)": { desc: "Trailing vine, very common indoor houseplant.", cat: "indoor", model: "free_pothos_potted_plant_-_money_plant.glb", scale: "0.8 0.8 0.8" },
+    "Tulip": { desc: "Spring-blooming flower, typically grown from bulbs.", cat: "temperate", model: "generic_tulip_flower.glb", scale: "0.4 0.4 0.4" },
+    "Ginger Plant": { desc: "Tropical plant cultivated for its aromatic rhizome.", cat: "tropical", model: "ginger_root.glb", scale: "0.3 0.3 0.3" },
+    "Grape Vines": { desc: "Woody vines cultivated for grapes, prefer temperate climates.", cat: "temperate", model: "grape_vines.glb", scale: "2 2 2" },
+    "Guava Tree": { desc: "Fruit tree for warm tropical and subtropical regions.", cat: "tropical", model: "guava_tree_3d_model.glb", scale: "2 2 2" },
+    "Jade Plant": { desc: "Succulent houseplant, known for its thick, shiny leaves.", cat: "indoor", model: "jade_plant.glb", scale: "0.6 0.6 0.6" }, // Using the non-(1) version
+    "Jalapeno Plant": { desc: "Chili pepper plant, grown for its medium-hot fruits.", cat: "tropical", model: "jalapeno_plant.glb", scale: "0.5 0.5 0.5" },
+    "Tea Plant": { desc: "Shrub cultivated for tea leaves, thrives in humid hills.", cat: "humid", model: "cc0___tea_plant_camellia_sinensis.glb", scale: "1 1 1" },
+    "Cedar": { desc: "Large evergreen coniferous tree, known for fragrant wood.", cat: "cold", model: "cedar.glb", scale: "4.5 4.5 4.5" },
+    "Cherry Blossom Branch": { desc: "Branch with delicate pink flowers, symbolic of spring.", cat: "temperate", model: "cherry_blossom_branch.glb", scale: "1 1 1" },
+    "Cherry Blossom Tree": { desc: "Deciduous trees known for beautiful spring blooms.", cat: "temperate", model: "cherry_blossom_trees.glb", scale: "3 3 3" },
+    "Coconut Palm": { desc: "Iconic palm for tropical coastal areas with high humidity.", cat: "humid", model: "coconut_palm.glb", scale: "2.5 2.5 2.5" }, // Using this version
+    "Coconut Tree (Low Poly)": { desc: "Low poly version of the tropical coconut tree.", cat: "humid", model: "coconut_tree_low_poly.glb", scale: "2.5 2.5 2.5" }, // Explicitly using (low poly)
+    "Coffee Plant": { desc: "Shrub cultivated for coffee beans, needs warm humid hills.", cat: "humid", model: "coffee_plant_sasha_an.glb", scale: "1.2 1.2 1.2" }, // Using the non-(1) version
+    "Colocasia (Potted)": { desc: "Tropical foliage plant with large, heart-shaped leaves.", cat: "tropical", model: "colocasia_potted.glb", scale: "0.7 0.7 0.7" }, // Using the non-(1) version
+    "Daffodil": { desc: "Spring-flowering bulb, known for its trumpet-shaped bloom.", cat: "temperate", model: "daffodil.glb", scale: "0.3 0.3 0.3" },
+    "Daisy": { desc: "Common flowering plant with white petals and a yellow center.", cat: "temperate", model: "daisy_flower.glb", scale: "0.2 0.2 0.2" },
+    "Date Palm": { desc: "Desert fruit tree, thrives in hot, arid regions.", cat: "desert", model: "date_palm.glb", scale: "3.5 3.5 3.5" }, // Using the non-(1) version
+    "Snake Plant": { desc: "Hardy indoor air-purifier, very tolerant of neglect.", cat: "indoor", model: "day_178_snake_plant.glb", scale: "0.7 0.7 0.7" },
+    "Desert Rose": { desc: "Blooms in hot arid soil, striking succulent.", cat: "desert", model: "desert_rose.glb", scale: "0.6 0.6 0.6" },
+    "Dried Sagebrush": { desc: "Arid land shrub, distinctive fragrance.", cat: "desert", model: "dried_sagebrush.glb", scale: "1.2 1.2 1.2" },
+    "Fern": { desc: "Moisture-loving shade plant, ancient lineage.", cat: "humid", model: "fern.glb", scale: "0.6 0.6 0.6" },
+    "Camellia Sasanqua": { desc: "Evergreen shrub with attractive flowers, mild climates.", cat: "temperate", model: "cc0__camellia_sasanqua_shishigashira.glb", scale: "1 1 1" },
+    "Fish Mint": { desc: "Asian herb, grows in moist, shady areas.", cat: "humid", model: "cc0__fish_mint_houttuynia_cordata.glb", scale: "0.4 0.4 0.4" },
+    "Cactus": { desc: "General term for succulents adapted to arid conditions.", cat: "desert", model: "cactus.glb", scale: "0.5 0.5 0.5" }, // Using the non-(1) version
+    "Casuarina Tree": { desc: "Fast-growing, salt-tolerant tree, often found in coastal areas.", cat: "tropical", model: "casuarina_cone_-_photogrammetry.glb", scale: "3.8 3.8 3.8" },
+    "Barley Plant": { desc: "Cereal grain, grown in temperate climates.", cat: "temperate", model: "cc0__barley_hordeum_vulgare.glb", scale: "0.7 0.7 0.7" },
+    "Chinese Evergreen": { desc: "Popular indoor plant with attractive patterned leaves.", cat: "indoor", model: "aglaonema_chinese_evergreen_-_sketchfab_weekly.glb", scale: "0.7 0.7 0.7" }, // Using the non-(1) version
+    "Aloe Vera": { desc: "Succulent with medicinal properties, needs dry, warm conditions.", cat: "desert", model: "aloe_vera_plant..glb", scale: "0.4 0.4 0.4" }, // Corrected filename (dot at end)
+    "Apple Tree": { desc: "Fruit tree requiring cold winters and mild summers.", cat: "cold", model: "apple_tree.glb", scale: "3.5 3.5 3.5" },
+    "Areca Palm": { desc: "Popular ornamental palm, thrives in warm, humid conditions.", cat: "humid", model: "areca_palm_lowpoly.glb", scale: "1.5 1.5 1.5" },
+    "Bamboo": { desc: "Fast-growing giant grass, versatile and prefers humid environments.", cat: "humid", model: "bamboo.glb", scale: "2 2 2" },
+    "Banana Plant": { desc: "Tropical fruit plant, needs warmth and rich, moist soil.", cat: "tropical", model: "banana_plant.glb", scale: "1.8 1.8 1.8" },
+    "Birch Tree": { desc: "Deciduous tree with distinctive bark, common in temperate/cold regions.", cat: "cold", model: "birch_tree.glb", scale: "3.8 3.8 3.8" },
+    "Bougainvillea": { desc: "Vibrant, drought-tolerant ornamental shrub/vine.", cat: "desert", model: "bougainvillea_day_26.glb", scale: "1 1 1" },
+    // You have 71 unique GLB filenames listed if we consolidate duplicates.
+    // If you have more distinct GLB files not covered by this, add them here.
+    // For example, if 'sugarcane (1).glb' is a different model, name it "Sugarcane Tall" and point to it.
+};
+
+// Auto-fill categories for convenience.
+// This is a default list, you should refine this based on your knowledge of each plant.
+const categories = {
+    desert: [
+        "Prickly Pear Cactus", "Pincushion Euphorbia", "Joshua Tree", "Fishhook Barrel Cactus",
+        "Dried Sagebrush", "Cactus", "Aloe Vera", "Bougainvillea", "Western Juniper", "Desert Rose"
+    ],
+    tropical: [
+        "Frangipani Tree", "Tulsi (Holy Basil)", "Neem Tree", "Plumeria", "Mango Tree",
+        "Morning Glory", "Jasmine", "Ginger Plant", "Guava Tree", "Jalapeno Plant", "Colocasia (Potted)", "Banana Plant", "Casuarina Tree"
+    ],
+    humid: [
+        "Rice Plant", "Sugarcane", "Taro", "Mangrove Tree", "Tea Plant",
+        "Coconut Palm", "Coconut Tree (Low Poly)", "Coffee Plant", "Fern", "Fish Mint", "Areca Palm", "Bamboo"
+    ],
+    temperate: [
+        "Wheat Plant", "Rosemary Willow", "Rose", "Sunflower", "Thyme", "Pansy Primrose",
+        "Oak Tree", "Pomegranate", "Lavender", "Maple Tree", "Marsh Marigold", "Tulip",
+        "Grape Vines", "Cherry Blossom Branch", "Cherry Blossom Tree", "Daffodil", "Daisy", "Camellia Sasanqua", "Barley Plant"
+    ],
+    cold: [
+        "Snowdrop", "Spruce Tree", "Pine", "Fir Tree", "Cedar", "Apple Tree", "Birch Tree"
+    ],
+    indoor: [
+        "Rubber Plant", "Spider Plant", "Peace Lily", "Pothos Plant", "Money Plant (Pothos)",
+        "Jade Plant", "Snake Plant", "Chinese Evergreen"
+    ]
+};
+
+
+async function getWeather(){
+    const city = document.getElementById("citySelect").value; // Get city from dropdown
+    const weatherResult = document.getElementById("weatherResult");
+    const plantList = document.getElementById("plantList");
+    const spinner = document.getElementById("loadingSpinner");
+    plantList.innerHTML = "";
+    weatherResult.innerHTML = "";
+    spinner.style.display = "block";
+
+    if (!city) {
+        weatherResult.innerHTML = "<span style='color:red'>Please select a city.</span>";
+        spinner.style.display = "none";
+        return;
+    }
+
+    try {
+        const query = `${city},${defaultCountry}`;
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${apiKey}`);
+        const data = await res.json();
+
+        if (data.cod !== 200) {
+            weatherResult.innerHTML = `<span style='color:red'>Could not fetch weather for ${city}. Please try another city.</span>`;
+            spinner.style.display = "none";
+            return;
+        }
+
+        const t = data.main.temp;
+        const h = data.main.humidity;
+        const c = data.weather[0].description; // More descriptive weather
+        weatherResult.innerHTML = `🌍 <strong>${data.name}</strong><br>🌡️ ${t}°C  💧 ${h}%  ☁️ ${c}`;
+
+        let detectedCategory = "temperate"; // Default to temperate
+        if (t < 10) detectedCategory = "cold";
+        else if (t >= 10 && t < 20) detectedCategory = "temperate";
+        else if (t >= 20 && t < 30) detectedCategory = (h > 75 || c.includes("rain") || c.includes("mist")) ? "humid" : "tropical";
+        else if (t >= 30 && h < 40) detectedCategory = "desert";
+        else if (h > 80 || c.includes("rain") || c.includes("mist")) detectedCategory = "humid"; // Strong humid indicator
+
+
+        // Get plants for the detected category, or default to all tropical if category is empty
+        const suggestedPlantNames = categories[detectedCategory] || categories.tropical;
+
+        if (suggestedPlantNames.length === 0) {
+             plantList.innerHTML = `<div class="plant"><h3>No specific suggestions for ${detectedCategory}</h3><p>Try indoor plants or a different city.</p></div>`;
+             // Also suggest indoor plants if specific category is empty
+             if (categories.indoor && categories.indoor.length > 0) {
+                 plantList.innerHTML += `<div class="plant"><h3>Consider Indoor Plants:</h3></div>`;
+                 displayPlants(categories.indoor, "indoor");
+             }
+        } else {
+            displayPlants(suggestedPlantNames, detectedCategory);
+        }
+
+    } catch (e) {
+        weatherResult.innerHTML = "<span style='color:red'>Error fetching weather. Please check your internet connection or API key.</span>";
+        console.error("Weather fetching error:", e);
+    } finally {
+        spinner.style.display = "none";
+    }
+}
+
+function displayPlants(list, categoryType){
+    const plantList = document.getElementById("plantList");
+    // Clear existing plants if not appending specifically
+    if (plantList.innerHTML.includes("Welcome!")) {
+        plantList.innerHTML = "";
+    }
+
+    list.forEach(plantName => {
+        const plantData = plantDatabase[plantName];
+        if (!plantData) {
+            console.warn(`Plant data not found for: ${plantName}`);
+            return;
+        }
+        plantList.innerHTML += `
+            <div class="plant">
+              <h3>${plantName}</h3>
+              <p>${plantData.desc} (Suited for ${categoryType} climates.)</p>
+              <a class="ar-button" target="_blank"
+                 href="ar-view.html?plant=${encodeURIComponent(plantName)}&model=${encodeURIComponent(plantData.model)}&scale=${encodeURIComponent(plantData.scale)}">
+                 View in AR
+              </a>
+            </div>`;
+    });
+}
+</script>
+</body>
+</html>
+>>>>>>> aeb5ba890b737b73f44ba9dfafba86255630cb45

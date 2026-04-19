@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<<<<<<< HEAD
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conditions | ClimateGuard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--white:#ffffff;--offwhite:#f8f8f6;--ink:#0d1a0f;--ink2:#2a3a2d;--muted:#6b7a6d;--border:#e4e8e4;--green:#1a5c2e;--green-dark:#0f3d1e;--green-pill:#d4ede0;--green-pill-text:#1a5c2e;--accent:#2d7a47;--nh:60px;--ease:cubic-bezier(.16,1,.3,1);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+nav{height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);text-decoration:none;}
+.nl{list-style:none;display:flex;align-items:center;gap:2px;}
+.nl a{font-size:.84rem;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;transition:.18s;position:relative;}
+.nl a.active{color:var(--ink);font-weight:600;}
+.nl a.active::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:var(--green);border-radius:2px;}
+.nl a:hover{color:var(--ink);}
+.nr{display:flex;align-items:center;gap:10px;}
+.ni{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;cursor:pointer;transition:.18s;}
+.ni:hover{background:var(--offwhite);}
+.ns{background:var(--green);color:#fff;font-size:.82rem;font-weight:600;padding:8px 18px;border-radius:7px;text-decoration:none;transition:.2s;}
+.ns:hover{background:var(--green-dark);}
+.nav-user{display:flex;align-items:center;margin-left:4px;position:relative;}
+.nav-avatar{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:700;cursor:pointer;transition:.2s;text-transform:uppercase;}
+.nav-avatar:hover{background:var(--green-dark);}
+.nav-avatar-wrap{display:flex;align-items:center;gap:6px;}
+.nav-avatar-arrow{font-size:.6rem;color:var(--muted);transition:transform .2s;margin-left:2px;}
+.nav-user.open .nav-avatar-arrow{transform:rotate(180deg);}
+.profile-drop{position:absolute;top:calc(100% + 10px);right:0;width:240px;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.12);z-index:300;opacity:0;transform:translateY(-8px) scale(.97);pointer-events:none;transition:opacity .22s var(--ease),transform .22s var(--ease);}
+.profile-drop.open{opacity:1;transform:none;pointer-events:all;}
+.pd-header{padding:18px 18px 14px;border-bottom:1px solid var(--border);}
+.pd-name{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.pd-email{font-size:.76rem;color:var(--muted);}
+.pd-menu{padding:8px;}
+.pd-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:.84rem;color:var(--ink2);cursor:pointer;transition:.15s;text-decoration:none;}
+.pd-item:hover{background:var(--offwhite);color:var(--ink);}
+.pd-item.danger{color:#c0392b;}
+.pd-item.danger:hover{background:#fde8e8;}
+.pd-divider{height:1px;background:var(--border);margin:6px 0;}
+.page-enter{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.page-enter-active{opacity:1;transform:none;}
+.page-leaving{opacity:0;transform:translateY(-8px);transition:opacity .28s ease,transform .28s ease;}
+.login-landing{animation:loginReveal .7s .15s var(--ease) both;}
+@keyframes loginReveal{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+.btn-green{background:var(--green);color:#fff;font-weight:600;font-size:.88rem;padding:12px 24px;border-radius:8px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px;border:none;cursor:pointer;}
+.btn-green:hover{background:var(--green-dark);}
+.btn-ghost{background:transparent;color:var(--ink);font-weight:500;font-size:.88rem;padding:11px 22px;border-radius:8px;text-decoration:none;border:1.5px solid var(--border);transition:.2s;display:inline-flex;align-items:center;gap:6px;cursor:pointer;}
+.btn-ghost:hover{border-color:var(--ink);background:var(--offwhite);}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--white);}
+.fl{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--ink);}
+.flinks{display:flex;gap:24px;}
+.flinks a{font-size:.78rem;color:var(--muted);text-decoration:none;transition:.2s;}
+.flinks a:hover{color:var(--ink);}
+footer p{font-size:.75rem;color:var(--muted);}
+.ph{padding:80px 48px 72px;max-width:1200px;margin:0 auto;}
+.ph-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-pill);color:var(--green-pill-text);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:24px;width:fit-content;}
+.ph-pill::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;}
+.ph-title{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.8rem);line-height:1.0;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px;}
+.ph-title em{font-style:italic;}
+.ph-sub{font-size:.96rem;color:var(--muted);line-height:1.82;max-width:540px;font-weight:300;margin-bottom:36px;}
+.ph-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.pg{max-width:1200px;margin:0 auto;padding:0 48px 100px;}
+.section-lbl{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em;}
+.section-title em{font-style:italic;color:var(--green);}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:36px;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:.35s var(--ease);}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.07);}
+.card-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:16px;}
+.ci-g{background:var(--green-pill);}.ci-o{background:#fdf0e8;}.ci-b{background:#e8f0fd;}.ci-p{background:#f0e8fd;}.ci-t{background:#fdf8e8;}.ci-r{background:#fde8e8;}
+.card h3{font-size:.94rem;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.card p{font-size:.84rem;color:var(--muted);line-height:1.72;}
+.num-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:14px;overflow:hidden;margin-top:36px;}
+.ni2{background:var(--ink);padding:36px 20px;text-align:center;transition:.2s;}
+.ni2:hover{background:#1a2e1d;}
+.nv{font-family:'DM Serif Display',serif;font-size:2.8rem;font-weight:400;color:var(--accent);line-height:1;margin-bottom:6px;}
+.nl2{font-size:.74rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;}
+@keyframes fadeup{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+@media(max-width:900px){nav{padding:0 20px;}.nl{display:none;}.ph{padding:56px 20px 56px;}.pg{padding:0 20px 80px;}.num-bar{grid-template-columns:repeat(2,1fr);}footer{padding:20px;justify-content:center;flex-direction:column;text-align:center;}.flinks{flex-wrap:wrap;justify-content:center;}}
+
+.zone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;margin-bottom:60px;}
+.zc{border-radius:14px;overflow:hidden;position:relative;height:280px;cursor:pointer;transition:transform .4s var(--ease),box-shadow .4s;}
+.zc:hover{transform:translateY(-5px);box-shadow:0 18px 48px rgba(0,0,0,.12);}
+.zc-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s var(--ease);}
+.zc:hover .zc-bg{transform:scale(1.06);}
+.zc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.80) 0%,rgba(0,0,0,.22) 50%,rgba(0,0,0,.04) 100%);}
+.zc-body{position:absolute;bottom:0;left:0;right:0;padding:22px;z-index:1;}
+.zc-spec{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:5px;}
+.zc-name{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#fff;margin-bottom:6px;}
+.zc-tags{font-size:.76rem;color:rgba(255,255,255,.65);line-height:1.5;}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ic{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:30px;}
+.ic h2{font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:18px;}
+.tip{display:flex;gap:10px;font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:11px;}
+.tip::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;flex-shrink:0;margin-top:8px;}
+@media(max-width:900px){.zone-grid,.info-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="page-enter">
+<nav><a href="index.html" class="nav-logo">ClimateGuard AR</a><ul class="nl"><li><a href="index.html">Discovery</a></li><li><a href="conditions.html" class="active">Climate Lab</a></li><li><a href="plants.html">Botanical</a></li><li><a href="ai-suggestion.html">Innovation</a></li><li><a href="about.html">Insights</a></li></ul><div class="nr"></div></nav>
+<div class="ph"><div class="ph-pill">Laboratory</div><h1 class="ph-title rv">Every climate<br>tells a <em>story.</em></h1><p class="ph-sub rv">Understand your zone, choose the right natives, and garden with the planet.</p></div><div class="pg"><div class="section-lbl rv">Specimen Archive</div><h2 class="section-title rv">Choose Your Growing World</h2><div class="zone-grid"><div class="zc rv"><div class="zc-bg" style="background-image:url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=85&auto=format&fit=crop')"></div><div class="zc-ov"></div><div class="zc-body"><div class="zc-spec">Zone 01 &middot; Warm</div><div class="zc-name">Tropical</div><div class="zc-tags">Banana &middot; Hibiscus &middot; Neem &middot; Mango</div></div></div><div class="zc rv"><div class="zc-bg" style="background-image:url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=85&auto=format&fit=crop')"></div><div class="zc-ov"></div><div class="zc-body"><div class="zc-spec">Zone 02 &middot; Seasonal</div><div class="zc-name">Temperate</div><div class="zc-tags">Rose &middot; Oak &middot; Lavender &middot; Sunflower</div></div></div><div class="zc rv"><div class="zc-bg" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=85&auto=format&fit=crop')"></div><div class="zc-ov"></div><div class="zc-body"><div class="zc-spec">Zone 03 &middot; Arid</div><div class="zc-name">Desert</div><div class="zc-tags">Cactus &middot; Aloe Vera &middot; Date Palm</div></div></div><div class="zc rv"><div class="zc-bg" style="background-image:url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&q=85&auto=format&fit=crop')"></div><div class="zc-ov"></div><div class="zc-body"><div class="zc-spec">Zone 04 &middot; Wet</div><div class="zc-name">Humid</div><div class="zc-tags">Rice &middot; Bamboo &middot; Fern &middot; Coconut</div></div></div><div class="zc rv"><div class="zc-bg" style="background-image:url('https://images.unsplash.com/photo-1551698154-e8fc59a42a1b?w=600&q=85&auto=format&fit=crop')"></div><div class="zc-ov"></div><div class="zc-body"><div class="zc-spec">Zone 05 &middot; Cold</div><div class="zc-name">Alpine</div><div class="zc-tags">Kale &middot; Spruce &middot; Cedar &middot; Birch</div></div></div><div class="zc rv"><div class="zc-bg" style="background-image:url('https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=600&q=85&auto=format&fit=crop')"></div><div class="zc-ov"></div><div class="zc-body"><div class="zc-spec">Zone 06 &middot; Controlled</div><div class="zc-name">Indoor</div><div class="zc-tags">Snake Plant &middot; Pothos &middot; Peace Lily</div></div></div></div><div class="info-grid"><div class="ic rv"><h2>AI Toolkit</h2><div class="tip">Plant ID apps identify plants and diagnose pests instantly from a photo.</div><div class="tip">Garden planners provide AI placement suggestions for best growth.</div><div class="tip">Care schedulers send reminders for watering and fertilising.</div><div class="tip">Sensors monitor moisture, temperature, and sunlight in real time.</div></div><div class="ic rv"><h2>Eco Practices</h2><div class="tip">Use compost instead of chemical fertilisers for regenerative soil.</div><div class="tip">Collect rainwater and use drip irrigation to reduce water use.</div><div class="tip">Grow native plants to support local pollinators and biodiversity.</div><div class="tip">Practice zero-waste gardening: reuse containers, mulch leaves.</div></div><div class="ic rv"><h2>Native Specimens</h2><div class="tip"><b>Tropical:</b> Tabernaemontana, Ixora, Areca Palm</div><div class="tip"><b>Desert:</b> Euphorbia, Acacia, Prosopis cineraria</div><div class="tip"><b>Temperate:</b> Rhododendron, Himalayan Birch, Oak</div><div class="tip"><b>Alpine:</b> Juniperus, Artemisia, Blue Poppy</div></div></div></div>
+<footer>
+  <div class="fl">ClimateGuard AR</div>
+  <div class="flinks"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Research Ethics</a><a href="contact.html">Contact</a></div>
+  <p>&copy; 2025 ClimateGuard AR. All Rights Reserved.</p>
+</footer>
+
+<script>
+if(sessionStorage.getItem('cgSignedIn')==='1'){var si=document.getElementById('navSignIn'),nu=document.getElementById('navUser');if(si)si.style.display='none';if(nu)nu.style.display='flex';var hero=document.querySelector('.ph');if(hero)hero.classList.add('login-landing');}
+var avatarBtn=document.getElementById('navAvatarBtn');
+var profileDrop=document.getElementById('profileDrop');
+if(avatarBtn){avatarBtn.addEventListener('click',function(e){e.stopPropagation();profileDrop.classList.toggle('open');document.getElementById('navUser').classList.toggle('open');});document.addEventListener('click',function(){profileDrop.classList.remove('open');if(document.getElementById('navUser'))document.getElementById('navUser').classList.remove('open');});profileDrop.addEventListener('click',function(e){e.stopPropagation();});}
+var signOutBtn=document.getElementById('signOutBtn');
+if(signOutBtn){signOutBtn.addEventListener('click',function(e){e.preventDefault();sessionStorage.removeItem('cgSignedIn');window.location.href='index.html';});}
+document.querySelectorAll('a[href]').forEach(function(link){var href=link.getAttribute('href');if(href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('http')){link.addEventListener('click',function(e){e.preventDefault();document.body.classList.add('page-leaving');setTimeout(function(){window.location.href=href;},280);});}});
+document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('page-enter-active');});
+var io=new IntersectionObserver(function(e){e.forEach(function(x,i){if(x.isIntersecting){setTimeout(function(){x.target.classList.add('in');},i*55);io.unobserve(x.target);}});},{threshold:0.06});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+</script>
+=======
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions | ClimateGard</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e') no-repeat center center/cover;
+      background-attachment: fixed;
+      color: white;
+      line-height: 1.8;
+    }
+    header {
+      background: rgba(0,0,0,0.7);
+      padding: 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 { margin: 0; font-size: 2.2em; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 8px;
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a.active { color: #7fff00; }
+    main {
+      padding: 20px 48px 48px 48px;
+      background: rgba(0, 0, 0, 0.6);
+      max-width: 900px;
+      margin: 40px auto;
+      border-radius: 12px;
+    }
+    .page-title {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .content-section {
+      margin-bottom: 40px;
+    }
+    .content-section h2 {
+      font-size: 1.8em;
+      color: #9eff8f;
+      border-bottom: 2px solid #9eff8f;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    .content-section ul {
+      list-style-type: '🌿';
+      padding-left: 20px;
+    }
+    .content-section li {
+      margin-bottom: 10px;
+    }
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      text-align: center;
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6em; }
+      nav { gap: 6px; padding: 12px; }
+      nav a { font-size: 0.95em; }
+      main { padding: 20px; margin: 20px 12px; }
+      .page-title { font-size: 2em; }
+      .content-section h2 { font-size: 1.5em; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 ClimateGuard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="plants.html">AR view & Suggestions</a>
+      <a href="conditions.html" class="active">Conditions</a>
+      <a href="plant-suggestion.html">AI plants optimizer</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Grow Smart. Grow Green.</h1>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+      Whether you live in a tropical paradise, a desert, or a cold mountain town, ClimateGard helps you grow plants that thrive in your unique climate — using AI, native species, and eco-friendly practices.
+    </p>
+
+    <section class="content-section">
+      <h2>🌎 Understanding Climate Zones</h2>
+        <p><strong>🌴 Tropical Zones:</strong> Warm, humid, and lush — ideal for banana, hibiscus, and ginger lily. Use raised beds and mulch to manage moisture.</p>
+        <p><strong>🏜️ Desert Zones:</strong> Hot and dry — perfect for aloe vera, agave, and lantana. Use drip irrigation and compost-rich soil to retain water.</p>
+        <p><strong>🌤️ Temperate Zones:</strong> Four seasons — grow tomatoes, tulips, and apples. Rotate crops and compost leaves for healthy soil.</p>
+        <p><strong>🏔️ Alpine Zones:</strong> Cold and short seasons — kale, spinach, and marigolds thrive. Use raised beds and frost-hardy perennials.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>🤖 AI Tools for Smart Gardening</h2>
+      <ul>
+        <li><b>Plant ID Apps:</b> Use image recognition to identify plants and pests instantly.</li>
+        <li><b>Garden Planners:</b> Visualize your layout and get AI suggestions for plant placement.</li>
+        <li><b>Care Schedulers:</b> Receive reminders for watering, fertilizing, and pruning.</li>
+        <li><b>Soil & Weather Sensors:</b> Monitor moisture, temperature, and sunlight in real time.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>♻️ Eco-Friendly Gardening Practices</h2>
+      <ul>
+        <li>Use compost instead of chemical fertilizers.</li>
+        <li>Collect rainwater and use drip irrigation to conserve water.</li>
+        <li>Grow native plants to support local biodiversity.</li>
+        <li>Practice zero-waste gardening: reuse containers, mulch leaves, and avoid plastic.</li>
+      </ul>
+    </section>
+    
+    <section class="content-section">
+      <h2>🌿 Native Plants by Zone</h2>
+      <ul>
+        <li><b>Tropical:</b> Tabernaemontana, Ixora, Areca palm</li>
+        <li><b>Desert:</b> Euphorbia, Acacia, Prosopis cineraria</li>
+        <li><b>Temperate:</b> Rhododendron, Himalayan birch, Oak</li>
+        <li><b>Alpine:</b> Juniperus, Artemisia, Himalayan blue poppy</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 ClimateGard | Developed by Kautilya Shukla & Team
+  </footer>
+
+>>>>>>> aeb5ba890b737b73f44ba9dfafba86255630cb45
+</body>
+</html>

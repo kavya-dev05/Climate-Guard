@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Plant Suggestion | ClimateGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--white:#ffffff;--offwhite:#f8f8f6;--ink:#0d1a0f;--ink2:#2a3a2d;--muted:#6b7a6d;--border:#e4e8e4;--green:#1a5c2e;--green-dark:#0f3d1e;--green-pill:#d4ede0;--green-pill-text:#1a5c2e;--nh:60px;--ease:cubic-bezier(.16,1,.3,1);}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+    nav{height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);text-decoration:none;}
+    .nl{list-style:none;display:flex;align-items:center;gap:2px;}
+    .nl a{font-size:.84rem;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;transition:.18s;}
+    .nl a.active{color:var(--ink);font-weight:600;}
+    .nl a.active::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:var(--green);border-radius:2px;}
+    .nl a:hover{color:var(--ink);}
+    .nr{display:flex;align-items:center;gap:10px;}
+    .ni{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;cursor:pointer;}
+    .ni:hover{background:var(--offwhite);}
+    .ns{background:var(--green);color:#fff;font-size:.82rem;font-weight:600;padding:8px 18px;border-radius:7px;text-decoration:none;}
+    .ns:hover{background:var(--green-dark);}
+    footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--white);}
+    .fl{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--ink);}
+    .flinks{display:flex;gap:24px;flex-wrap:wrap;}
+    .flinks a{font-size:.78rem;color:var(--muted);text-decoration:none;}
+    .flinks a:hover{color:var(--ink);}
+    footer p{font-size:.75rem;color:var(--muted);}
+    
+    /* PAGE TRANSITIONS */
+    .page-enter{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+    .page-enter-active{opacity:1;transform:none;}
+    .page-leaving{opacity:0;transform:translateY(-8px);transition:opacity .28s ease,transform .28s ease;}
+    
+    /* REVEAL ANIMATIONS */
+    @keyframes fadeup{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+    .rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+    .rv.in{opacity:1;transform:none;}
+    
+    /* PAGE SPECIFIC */
+    .ai-hero{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .ai-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px;}
+    .ai-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-pill);color:var(--green-pill-text);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:24px;width:fit-content;}
+    .ai-pill::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;}
+    .ai-title{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.0;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px;}
+    .ai-sub{font-size:.95rem;color:var(--muted);line-height:1.82;max-width:400px;font-weight:300;margin-bottom:36px;}
+    
+    /* UPLOAD AREA */
+    .upload-zone{border:2px dashed var(--border);border-radius:16px;padding:40px;text-align:center;cursor:pointer;transition:.22s;background:var(--offwhite);}
+    .upload-zone:hover{border-color:var(--green);background:var(--white);}
+    .upload-zone.active{border-color:var(--green);background:var(--green-pill);}
+    .upload-icon{font-size:3rem;margin-bottom:16px;display:block;}
+    .upload-title{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:8px;color:var(--ink);}
+    .upload-sub{font-size:.86rem;color:var(--muted);margin-bottom:16px;}
+    #photoInput{display:none;}
+    .upload-btn{background:var(--green);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.86rem;cursor:pointer;transition:.2s;}
+    .upload-btn:hover{background:var(--green-dark);}
+    
+    /* PREVIEW */
+    .preview-section{display:none;margin-top:60px;padding:40px;background:var(--offwhite);border-radius:16px;}
+    .preview-section.show{display:block;}
+    .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+    .preview-img{border-radius:12px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.1);}
+    .preview-img img{width:100%;display:block;height:auto;}
+    
+    /* RESULT */
+    .ai-result{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:32px;}
+    .result-title{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:16px;color:var(--ink);}
+    .result-text{font-size:.92rem;line-height:1.8;color:var(--muted);margin-bottom:24px;}
+    .plant-recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+    .plant-rec{background:var(--green-pill);border-radius:10px;padding:16px;text-align:center;transition:.2s;}
+    .plant-rec:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(26,92,46,.15);}
+    .plant-rec-name{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--green-pill-text);margin-bottom:6px;}
+    .plant-rec-desc{font-size:.78rem;color:var(--ink2);line-height:1.5;}
+    
+    /* SPINNER */
+    .spinner{display:inline-block;width:20px;height:20px;border:3px solid rgba(0,0,0,.1);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    
+    @media(max-width:900px){nav{padding:0 20px;}.nl{display:none;}.ai-header{grid-template-columns:1fr;gap:36px;}.ai-hero{padding:48px 20px;}.preview-grid{grid-template-columns:1fr;}.plant-recs{grid-template-columns:1fr;}footer{padding:20px;justify-content:center;flex-direction:column;text-align:center;}.flinks{justify-content:center;}}
+  </style>
+</head>
+<body class="page-enter">
+  <nav>
+    <a href="index.html" class="nav-logo">ClimateGuard AR</a>
+    <ul class="nl">
+    <li><a href="index.html">Discovery</a></li>
+    <li><a href="conditions.html">Climate Lab</a></li>
+    <li><a href="plants.html">Botanical</a></li>
+    <li><a href="ai-suggestion.html" class="active">Innovation</a></li>
+    <li><a href="about.html">Insights</a></li>
+    </ul>
+    <div class="nr"></div>
+  </nav>
+
+  <div class="ai-hero">
+    <div class="ai-header">
+      <div>
+        <div class="ai-pill">Generative AI Tool</div>
+        <h1 class="ai-title">Design your<br><em>ideal</em> space.</h1>
+        <p class="ai-sub">Upload a photo of your space. Our AI analyzes the layout, lighting, and dimensions to recommend the perfect climate-matched plants for your exact area.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85&auto=format&fit=crop" class="rv" style="width:100%;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.1);display:block;" alt="Interior space with plants">
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()">
+      <span class="upload-icon">📸</span>
+      <h3 class="upload-title">Upload Your Space Photo</h3>
+      <p class="upload-sub">Drag and drop or click to select a JPG or PNG image (max 10MB)</p>
+      <input type="file" id="photoInput" accept="image/jpeg,image/png" onchange="handlePhotoUpload(event)">
+      <button class="upload-btn">Choose File</button>
+    </div>
+
+    <!-- PREVIEW & RESULT -->
+    <div class="preview-section" id="previewSection">
+      <div class="preview-grid">
+        <div class="preview-img">
+          <img id="previewImg" src="" alt="Your uploaded space">
+        </div>
+        <div class="ai-result">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+            <div class="spinner"></div>
+            <span style="color:var(--muted);font-size:.9rem;">Analysing your space with AI...</span>
+          </div>
+          <div id="resultContent" style="display:none;">
+            <h3 class="result-title">Recommended Plants</h3>
+            <p class="result-text" id="resultText"></p>
+            <h4 style="font-size:.95rem;font-weight:600;margin-bottom:12px;color:var(--ink);">Top Suggestions:</h4>
+            <div class="plant-recs" id="plantRecs"></div>
+            <button class="upload-btn" onclick="resetUpload()" style="margin-top:24px;width:100%;">Upload Another Photo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="fl">ClimateGuard AR</div>
+    <div class="flinks">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Research Ethics</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 ClimateGuard AR. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    var RECOMMENDED_PLANTS = [
+      { name: "Pothos", desc: "Tolerates low light; adapts to any space" },
+      { name: "Snake Plant", desc: "Air purifier; thrives on neglect" },
+      { name: "Money Plant", desc: "Brings prosperity; grows in shade" },
+      { name: "Peace Lily", desc: "Elegant; indicates watering needs" },
+      { name: "Rubber Plant", desc: "Large leaves; statement piece" },
+      { name: "Spider Plant", desc: "Produces baby plantlets; easy care" }
+    ];
+
+    var uploadZone = document.getElementById('uploadZone');
+    var photoInput = document.getElementById('photoInput');
+    var previewSection = document.getElementById('previewSection');
+    var previewImg = document.getElementById('previewImg');
+    var resultContent = document.getElementById('resultContent');
+    var resultText = document.getElementById('resultText');
+    var plantRecs = document.getElementById('plantRecs');
+
+    uploadZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadZone.classList.add('active');
+    });
+
+    uploadZone.addEventListener('dragleave', function() {
+      uploadZone.classList.remove('active');
+    });
+
+    uploadZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadZone.classList.remove('active');
+      var files = e.dataTransfer.files;
+      if (files.length > 0) {
+        photoInput.files = files;
+        handlePhotoUpload({ target: { files: files } });
+      }
+    });
+
+    function handlePhotoUpload(event) {
+      var file = event.target.files[0];
+      if (!file) return;
+
+      if (file.size > 10 * 1024 * 1024) {
+        alert('File is too large. Maximum 10MB.');
+        return;
+      }
+
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        previewImg.src = e.target.result;
+        previewSection.classList.add('show');
+        
+        // Simulate AI processing
+        setTimeout(function() {
+          resultContent.style.display = 'block';
+          resultText.textContent = 'Based on your space\'s lighting, size, and layout, we recommend these climate-matched plants that will thrive in your environment. These selections are optimized for air purification and aesthetic appeal.';
+          
+          plantRecs.innerHTML = '';
+          var selected = [];
+          for (var i = 0; i < 3; i++) {
+            var plant = RECOMMENDED_PLANTS[Math.floor(Math.random() * RECOMMENDED_PLANTS.length)];
+            if (selected.indexOf(plant.name) === -1) {
+              selected.push(plant.name);
+              var div = document.createElement('div');
+              div.className = 'plant-rec';
+              div.innerHTML = '<div class="plant-rec-name">' + plant.name + '</div><div class="plant-rec-desc">' + plant.desc + '</div>';
+              plantRecs.appendChild(div);
+            }
+          }
+        }, 2500);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function resetUpload() {
+      photoInput.value = '';
+      previewSection.classList.remove('show');
+      resultContent.style.display = 'none';
+      previewImg.src = '';
+    }
+
+    // Page transitions
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('page-enter-active');
+    });
+    
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('http')) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(function() { window.location.href = href; }, 280);
+        });
+      }
+    });
+    
+    /* Reveal animations for .rv elements */
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(function() {
+            entry.target.classList.add('in');
+          }, i * 60);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    
+    document.querySelectorAll('.rv').forEach(function(el) {
+      io.observe(el);
+    });
+  </script>
+</body>
+</html>

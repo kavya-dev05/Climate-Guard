@@ -1,0 +1,192 @@
+{
+  "plants": [
+    {
+      "id": 1,
+      "name": "Neem Tree",
+      "scientificName": "Azadirachta indica",
+      "climate_zones": ["tropical", "subtropical"],
+      "temperature_range": [20, 35],
+      "rainfall": "high",
+      "sunlight": "full sun",
+      "description": "Ancient Indian tree with medicinal properties",
+      "model": "/plants/neem_tree.glb",
+      "emoji": "🌳"
+    },
+    {
+      "id": 2,
+      "name": "Mango Tree",
+      "scientificName": "Mangifera indica",
+      "climate_zones": ["tropical", "subtropical"],
+      "temperature_range": [24, 30],
+      "rainfall": "high",
+      "sunlight": "full sun",
+      "description": "Tropical fruit tree thriving in warm climates",
+      "model": "/plants/mango_tree.glb",
+      "emoji": "🥭"
+    },
+    {
+      "id": 3,
+      "name": "Bamboo",
+      "scientificName": "Bambusa vulgaris",
+      "climate_zones": ["tropical", "subtropical", "temperate"],
+      "temperature_range": [10, 35],
+      "rainfall": "moderate",
+      "sunlight": "partial sun",
+      "description": "Fast-growing versatile plant for multiple zones",
+      "model": "/plants/bamboo.glb",
+      "emoji": "🎋"
+    },
+    {
+      "id": 4,
+      "name": "Desert Rose",
+      "scientificName": "Adenium obesum",
+      "climate_zones": ["arid", "semi-arid"],
+      "temperature_range": [15, 40],
+      "rainfall": "low",
+      "sunlight": "full sun",
+      "description": "Elegant succulent thriving in dry climates",
+      "model": "/plants/desert_rose.glb",
+      "emoji": "🌹"
+    },
+    {
+      "id": 5,
+      "name": "Aloe Vera",
+      "scientificName": "Aloe barbadensis",
+      "climate_zones": ["arid", "semi-arid", "tropical"],
+      "temperature_range": [13, 38],
+      "rainfall": "low",
+      "sunlight": "full sun",
+      "description": "Medicinal succulent perfect for dry environments",
+      "model": "/plants/aloe_vera_plant.glb",
+      "emoji": "🍃"
+    },
+    {
+      "id": 6,
+      "name": "Jasmine",
+      "scientificName": "Jasminum officinale",
+      "climate_zones": ["tropical", "subtropical", "temperate"],
+      "temperature_range": [10, 30],
+      "rainfall": "moderate",
+      "sunlight": "partial sun",
+      "description": "Fragrant flowering plant for gardens",
+      "model": "/plants/jasmine.glb",
+      "emoji": "🌸"
+    },
+    {
+      "id": 7,
+      "name": "Tulsi (Holy Basil)",
+      "scientificName": "Ocimum sanctum",
+      "climate_zones": ["tropical", "subtropical"],
+      "temperature_range": [20, 35],
+      "rainfall": "moderate",
+      "sunlight": "full sun",
+      "description": "Sacred medicinal herb in Indian culture",
+      "model": "/plants/tulsi_tree_on_a_cement_tub.glb",
+      "emoji": "🌿"
+    },
+    {
+      "id": 8,
+      "name": "Coffee Plant",
+      "scientificName": "Coffea arabica",
+      "climate_zones": ["tropical", "subtropical"],
+      "temperature_range": [15, 24],
+      "rainfall": "high",
+      "sunlight": "partial shade",
+      "description": "Premium coffee growing in high altitude tropics",
+      "model": "/plants/coffee_plant_sasha_an.glb",
+      "emoji": "☕"
+    },
+    {
+      "id": 9,
+      "name": "Pothos (Money Plant)",
+      "scientificName": "Epipremnum aureum",
+      "climate_zones": ["tropical", "subtropical", "temperate"],
+      "temperature_range": [12, 30],
+      "rainfall": "moderate",
+      "sunlight": "partial shade",
+      "description": "Indoor plant thriving in various climates",
+      "model": "/plants/free_pothos_potted_plant_-_money_plant.glb",
+      "emoji": "🪴"
+    },
+    {
+      "id": 10,
+      "name": "Sugarcane",
+      "scientificName": "Saccharum officinarum",
+      "climate_zones": ["tropical", "subtropical"],
+      "temperature_range": [20, 30],
+      "rainfall": "high",
+      "sunlight": "full sun",
+      "description": "Major crop in tropical and subtropical regions",
+      "model": "/plants/sugarcane.glb",
+      "emoji": "🌾"
+    },
+    {
+      "id": 11,
+      "name": "Pine Tree",
+      "scientificName": "Pinus sylvestris",
+      "climate_zones": ["temperate", "boreal"],
+      "temperature_range": [-5, 20],
+      "rainfall": "moderate",
+      "sunlight": "full sun",
+      "description": "Conifer tree for cooler climates",
+      "model": "/plants/pine_tree.glb",
+      "emoji": "🌲"
+    },
+    {
+      "id": 12,
+      "name": "Fern",
+      "scientificName": "Pteridophyta",
+      "climate_zones": ["tropical", "subtropical", "temperate"],
+      "temperature_range": [10, 28],
+      "rainfall": "high",
+      "sunlight": "partial shade",
+      "description": "Ancient shade-loving plant for moist areas",
+      "model": "/plants/fern.glb",
+      "emoji": "🌿"
+    }
+  ],
+  "climateZones": {
+    "tropical": {
+      "name": "Tropical",
+      "temp_range": [20, 35],
+      "description": "Hot and humid year-round",
+      "rainfall": "high",
+      "cities": ["Mumbai", "Kolkata", "Chennai", "Kochi", "Goa"]
+    },
+    "subtropical": {
+      "name": "Subtropical",
+      "temp_range": [15, 30],
+      "description": "Hot summers, mild winters",
+      "rainfall": "moderate",
+      "cities": ["Delhi", "Bangalore", "Hyderabad", "Pune", "Ahmedabad"]
+    },
+    "temperate": {
+      "name": "Temperate",
+      "temp_range": [5, 25],
+      "description": "Mild climate with distinct seasons",
+      "rainfall": "moderate",
+      "cities": ["Shimla", "Manali", "Srinagar", "Darjeeling"]
+    },
+    "arid": {
+      "name": "Arid",
+      "temp_range": [10, 40],
+      "description": "Very dry with low rainfall",
+      "rainfall": "low",
+      "cities": ["Jaisalmer", "Bikaner", "Leh"]
+    },
+    "semi-arid": {
+      "name": "Semi-Arid",
+      "temp_range": [15, 35],
+      "description": "Dry with occasional rainfall",
+      "rainfall": "low-moderate",
+      "cities": ["Jodhpur", "Rajkot", "Indore"]
+    },
+    "boreal": {
+      "name": "Boreal",
+      "temp_range": [-10, 15],
+      "description": "Very cold with short growing season",
+      "rainfall": "moderate",
+      "cities": ["Ladakh region"]
+    }
+  }
+}

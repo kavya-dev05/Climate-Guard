@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<<<<<<< HEAD
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClimateGuard — Nature, Reimagined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff;
+  --offwhite:#f8f8f6;
+  --ink:#0d1a0f;
+  --ink2:#2a3a2d;
+  --muted:#6b7a6d;
+  --border:#e4e8e4;
+  --green:#1a5c2e;
+  --green-dark:#0f3d1e;
+  --green-pill:#d4ede0;
+  --green-pill-text:#1a5c2e;
+  --accent:#2d7a47;
+  --nh:60px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  height:var(--nh);display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;background:var(--white);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:200;
+}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em;}
+.nav-links{list-style:none;display:flex;align-items:center;gap:2px;}
+.nav-links a{font-size:.84rem;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;transition:.18s;position:relative;}
+.nav-links a.active{color:var(--ink);font-weight:600;}
+.nav-links a.active::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:var(--green);border-radius:2px;}
+.nav-links a:hover{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;cursor:pointer;transition:.18s;}
+.nav-icon:hover{background:var(--offwhite);}
+.nav-signin{background:var(--green);color:#fff;font-size:.82rem;font-weight:600;padding:8px 18px;border-radius:7px;text-decoration:none;transition:.2s;}
+.nav-signin:hover{background:var(--green-dark);}
+
+/* ── HERO ── */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  height:calc(100vh - var(--nh));
+  background:var(--white);position:relative;overflow:hidden;
+}
+/* Solid split — white left, offwhite right, no clip-path overflow */
+.hero::after{
+  content:'';position:absolute;
+  top:0;right:0;bottom:0;left:50%;
+  background:var(--offwhite);
+  z-index:0;
+}
+.hero-left{
+  padding:72px 56px 72px 48px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:1;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green-pill);color:var(--green-pill-text);
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;margin-bottom:28px;width:fit-content;
+}
+.hero-pill::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;}
+.hero h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(3.2rem,6vw,5.6rem);line-height:1.0;
+  letter-spacing:-.025em;color:var(--ink);
+  margin-bottom:24px;
+}
+.hero-sub{
+  font-size:.96rem;color:var(--muted);line-height:1.8;
+  max-width:400px;font-weight:300;margin-bottom:40px;
+}
+.hero-btns{display:flex;gap:12px;align-items:center;}
+.btn-green{background:var(--green);color:#fff;font-weight:600;font-size:.88rem;padding:12px 24px;border-radius:8px;text-decoration:none;transition:.2s;border:none;cursor:pointer;}
+.btn-green:hover{background:var(--green-dark);}
+.btn-ghost{background:transparent;color:var(--ink);font-weight:500;font-size:.88rem;padding:11px 22px;border-radius:8px;text-decoration:none;border:1.5px solid var(--border);transition:.2s;cursor:pointer;}
+.btn-ghost:hover{border-color:var(--ink);background:var(--offwhite);}
+
+.hero-right{
+  display:flex;align-items:center;justify-content:center;
+  padding:56px 48px 56px 32px;
+  position:relative;z-index:1;
+}
+/* The hero image — no overlay, full pure photo */
+.hero-photo{
+  width:100%;max-width:480px;
+  border-radius:18px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.18);
+  aspect-ratio:4/5;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ── LAB UTILITIES ── */
+.lab{padding:80px 48px 0;max-width:1200px;margin:0 auto;}
+.lab-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;color:var(--ink);margin-bottom:8px;letter-spacing:-.02em;}
+.lab-sub{font-size:.88rem;color:var(--muted);margin-bottom:48px;}
+.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.lab-card{border:1px solid var(--border);border-radius:14px;padding:32px;background:var(--white);transition:.35s var(--ease);}
+.lab-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.08);}
+.lab-card.dark{background:var(--green);border-color:var(--green);color:#fff;}
+.lab-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:20px;}
+.lab-card-icon.light{background:var(--green-pill);}
+.lab-card-icon.dk{background:rgba(255,255,255,.15);}
+.lab-card h3{font-size:1rem;font-weight:600;margin-bottom:10px;}
+.lab-card.dark h3{color:#fff;}
+.lab-card p{font-size:.86rem;color:var(--muted);line-height:1.72;}
+.lab-card.dark p{color:rgba(255,255,255,.7);}
+.lab-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;color:var(--green);text-decoration:none;margin-top:20px;transition:.2s;}
+.lab-link:hover{gap:10px;}
+.lab-link.dk{color:rgba(255,255,255,.85);}
+
+/* ── ARCHIVE / PHOTO GRID ── */
+.archive{padding:100px 48px 80px;max-width:1200px;margin:0 auto;}
+.archive-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:12px;}
+.archive-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;text-align:center;color:var(--ink);margin-bottom:52px;letter-spacing:-.02em;}
+
+/* Balanced masonry grid */
+.photo-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;auto-rows:240px;}
+.pg-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:all .4s var(--ease);}
+.pg-item:hover{box-shadow:0 12px 32px rgba(0,0,0,.15);}
+.pg-item:hover .pg-img{transform:scale(1.05);}
+.pg-item-1{grid-column:span 5;grid-row:span 2;}
+.pg-item-2{grid-column:span 4;}
+.pg-item-3{grid-column:span 3;}
+.pg-item-4{grid-column:span 4;grid-row:span 2;}
+.pg-item-5{grid-column:span 3;}
+.pg-img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);display:block;background:var(--offwhite);}
+.pg-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:18px 16px;
+  background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 70%,transparent 100%);
+  backdrop-filter:blur(2px);
+}
+.pg-specimen{font-size:.68rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:6px;}
+.pg-name{font-family:'DM Serif Display',serif;font-size:1.05rem;font-weight:400;color:#fff;line-height:1.2;}
+
+/* ── PLANT CARDS (breakthroughs) ── */
+.breakthroughs{padding:80px 48px;max-width:1200px;margin:0 auto;}
+.bt-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;}
+.bt-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.2rem);font-weight:400;color:var(--ink);letter-spacing:-.02em;border-bottom:2px solid var(--ink);padding-bottom:6px;}
+.bt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.bt-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.35s var(--ease);}
+.bt-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,.09);}
+.bt-img{width:100%;height:180px;object-fit:cover;display:block;}
+.bt-img.tz{background:linear-gradient(135deg,#c8e6c9,#81c784);}
+.bt-img.hz{background:linear-gradient(135deg,#b2dfdb,#4db6ac);}
+.bt-img.dz{background:linear-gradient(135deg,#ffe0b2,#ffb74d);}
+.bt-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4.5rem;}
+.bt-body{padding:20px;}
+.bt-tags{display:flex;gap:8px;margin-bottom:10px;}
+.bt-tag{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:3px 8px;background:var(--offwhite);border-radius:4px;}
+.bt-tag.phase{color:var(--green);background:var(--green-pill);}
+.bt-name{font-family:'DM Serif Display',serif;font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+.bt-desc{font-size:.83rem;color:var(--muted);line-height:1.68;margin-bottom:16px;}
+.bt-author{display:flex;align-items:center;gap:8px;}
+.bt-avatar{width:24px;height:24px;border-radius:50%;background:var(--green-pill);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--green);}
+.bt-author-name{font-size:.78rem;color:var(--muted);font-weight:500;}
+.bt-ar{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:600;color:var(--green);text-decoration:none;margin-top:4px;margin-left:auto;}
+.bt-ar:hover{color:var(--green-dark);}
+.bt-footer{display:flex;align-items:center;justify-content:space-between;}
+
+/* ── SEARCH BAR ── */
+.search-section{padding:0 48px;max-width:1200px;margin:0 auto 60px;}
+.s-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.s-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.s-lbl{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+.s-sel{flex:1;min-width:180px;padding:10px 34px 10px 12px;font-family:'DM Sans',sans-serif;background:var(--offwhite);border:1.5px solid var(--border);border-radius:8px;color:var(--ink);font-size:.9rem;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7a6d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:18px;transition:.2s;}
+.s-sel:focus{border-color:var(--green);background:var(--white);}
+.s-sel option{background:#fff;color:var(--ink);}
+.s-btn{padding:10px 24px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.86rem;cursor:pointer;transition:.2s;white-space:nowrap;flex-shrink:0;}
+.s-btn:hover{background:var(--green-dark);}
+.w-res{flex-basis:100%;padding:11px 14px;background:var(--offwhite);border:1.5px solid var(--border);border-radius:8px;font-size:.84rem;color:var(--ink2);display:none;margin-top:4px;}
+.w-res.show{display:block;}
+.spin{display:none;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.r-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;}
+.r-meta h3{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);}
+.r-zt{padding:4px 12px;background:var(--green-pill);border-radius:20px;font-size:.72rem;font-weight:600;color:var(--green-pill-text);letter-spacing:.06em;text-transform:uppercase;}
+
+/* Plant cards for search results */
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;}
+.p-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease),box-shadow .3s;}
+.p-card.show{opacity:1;transform:none;}
+.p-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,.09);}
+.p-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;}
+.p-img.tz{background:linear-gradient(135deg,#c8e6c9,#a5d6a7);}
+.p-img.dz{background:linear-gradient(135deg,#ffe0b2,#ffcc80);}
+.p-img.tmz{background:linear-gradient(135deg,#b2dfdb,#80cbc4);}
+.p-img.hz{background:linear-gradient(135deg,#bbdefb,#90caf9);}
+.p-img.cz{background:linear-gradient(135deg,#e1f5fe,#b3e5fc);}
+.p-img.iz{background:linear-gradient(135deg,#f3e5f5,#ce93d8);}
+.p-ztag{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.88);border-radius:20px;padding:3px 10px;font-size:.65rem;font-weight:600;color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;}
+.p-body{padding:16px 18px 18px;}
+.p-name{font-family:'DM Serif Display',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:5px;}
+.p-desc{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.p-ar{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:600;color:var(--green);text-decoration:none;transition:.2s;}
+.p-ar:hover{color:var(--green-dark);}
+
+/* ── STATS ── */
+.stats-band{background:var(--offwhite);padding:60px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:80px 0 0;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:16px;overflow:hidden;}
+.stat{background:var(--white);padding:40px 28px;text-align:center;transition:.2s;}
+.stat:hover{background:var(--offwhite);}
+.stat-num{font-family:'DM Serif Display',serif;font-size:3rem;font-weight:400;color:var(--green);line-height:1;margin-bottom:6px;}
+.stat-lbl{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ── CTA ── */
+.cta-section{padding:100px 48px;text-align:center;background:var(--white);}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--ink);letter-spacing:-.02em;margin-bottom:14px;}
+.cta-section p{font-size:.95rem;color:var(--muted);max-width:440px;margin:0 auto 36px;line-height:1.8;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--white);}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--ink);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:.78rem;color:var(--muted);text-decoration:none;transition:.2s;}
+.footer-links a:hover{color:var(--ink);}
+footer p{font-size:.75rem;color:var(--muted);}
+
+
+
+/* ── REVEALS ── */
+@keyframes fadeup{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+
+/* ── EMPTY STATE ── */
+.empty{grid-column:1/-1;text-align:center;padding:64px 20px;border:1.5px dashed var(--border);border-radius:12px;}
+.empty-e{font-size:3rem;margin-bottom:14px;opacity:.35;}
+.empty h3{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);margin-bottom:6px;}
+.empty p{font-size:.86rem;color:var(--muted);}
+
+/* ── PAGE TRANSITIONS ── */
+.page-enter{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.page-enter-active{opacity:1;transform:none;}
+.page-leaving{opacity:0;transform:translateY(-8px);transition:opacity .28s ease,transform .28s ease;}
+
+/* ── POST-LOGIN TRANSITION ── */
+.login-landing{animation:loginReveal .7s .15s var(--ease) both;}
+@keyframes loginReveal{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+/* ── PROFILE DROP ARROW ── */
+.nav-avatar-wrap{display:flex;align-items:center;gap:6px;}
+.nav-avatar-arrow{font-size:.6rem;color:var(--muted);transition:transform .2s;margin-left:2px;}
+.nav-user.open .nav-avatar-arrow{transform:rotate(180deg);}
+
+@media(max-width:960px){
+  nav{padding:0 20px;}.nav-links{display:none;}
+  .hero{grid-template-columns:1fr;height:auto;}.hero::after{display:none;}
+  .hero-right{order:-1;padding:48px 20px 0;min-height:50vh;}
+  .hero-left{padding:40px 20px 48px;}
+  .hero-photo{max-width:100%;}
+  .lab,.archive,.breakthroughs,.search-section,.cta-section{padding-left:20px;padding-right:20px;}
+  .lab-grid{grid-template-columns:1fr;}
+  .photo-grid{grid-template-columns:1fr;grid-template-rows:auto;auto-rows:300px;}
+  .pg-item-1,.pg-item-2,.pg-item-3,.pg-item-4,.pg-item-5{grid-column:span 1 !important;grid-row:span 1 !important;}
+  .bt-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  footer{padding:20px;justify-content:center;text-align:center;flex-direction:column;}
+  .footer-links{flex-wrap:wrap;justify-content:center;}
+}
+</style>
+</head>
+<body class="page-enter">
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">ClimateGuard AR</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Discovery</a></li>
+    <li><a href="conditions.html">Climate Lab</a></li>
+    <li><a href="plants.html">Botanical</a></li>
+    <li><a href="ai-suggestion.html">Innovation</a></li>
+    <li><a href="about.html">Insights</a></li>
+  </ul>
+  <div class="nav-right">
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pill">Laboratory Phase 4.1</div>
+    <h1>Nature,<br>Reimagined.</h1>
+    <p class="hero-sub">Architecting the future of biological ecosystems through advanced AI integration and climate-matched botanical research across India.</p>
+    <div class="hero-btns">
+      <a href="plants.html" class="btn-green">Explore Specimens</a>
+      <a href="ai-suggestion.html" class="btn-ghost">AI Suggestion Tool</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Dramatic plant specimen photo — no overlay, full resolution -->
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?w=900&q=92&auto=format&fit=crop" alt="Botanical specimen">
+    </div>
+  </div>
+</section>
+
+<!-- ── LABORATORY UTILITIES ── -->
+<div class="lab">
+  <h2 class="lab-title rv">Laboratory Utilities</h2>
+  <p class="lab-sub rv">Precision-engineered tools for the modern botanical architect and conservationist.</p>
+  <div class="lab-grid">
+    <div class="lab-card rv">
+      <div class="lab-card-icon light">🏡</div>
+      <h3>For Homeowners</h3>
+      <p>Transform residential spaces into self-sustaining biomes with AI-guided planting layouts and real-time health telemetry.</p>
+      <a href="ai-suggestion.html" class="lab-link">Explore AI Suggestion →</a>
+    </div>
+    <div class="lab-card dark rv">
+      <div class="lab-card-icon dk">🏗️</div>
+      <h3>For Landscapers</h3>
+      <p>Enterprise-grade biological modeling and site-specific plant synthesis tools for large-scale operations.</p>
+      <a href="plants.html" class="lab-link dk">Find Climate-Matched Plants →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHIVE EXHIBIT ── -->
+<div class="archive">
+  <p class="archive-eyebrow rv">Archive Exhibit</p>
+  <h2 class="archive-title rv">AI-Generated Botanicals</h2>
+
+  <div class="photo-grid">
+    <!-- Item 1: Featured left — fern/tropical leaf close-up -->
+    <div class="pg-item pg-item-1 rv">
+      <img class="pg-img" src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=700&q=85&auto=format&fit=crop" alt="Fern specimen" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22400%22/%3E%3C/svg%3E'">
+      <div class="pg-label">
+        <div class="pg-specimen">Specimen #4842</div>
+        <div class="pg-name">Metallic Pteridophyta</div>
+      </div>
+    </div>
+    <!-- Item 2: Top middle — orchid/flower -->
+    <div class="pg-item pg-item-2 rv">
+      <img class="pg-img" src="https://images.unsplash.com/photo-1490750967868-88df5691cc77?w=600&q=85&auto=format&fit=crop" alt="Orchid hybrid" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22400%22/%3E%3C/svg%3E'">
+      <div class="pg-label">
+        <div class="pg-specimen">Specimen #2219</div>
+        <div class="pg-name">Vibrant Orchid Hybrid</div>
+      </div>
+    </div>
+    <!-- Item 3: Top right — succulent -->
+    <div class="pg-item pg-item-3 rv">
+      <img class="pg-img" src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=500&q=85&auto=format&fit=crop" alt="Arid specimen" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22400%22/%3E%3C/svg%3E'">
+      <div class="pg-label">
+        <div class="pg-specimen">Specimen #0831</div>
+        <div class="pg-name">Arid Succulent Form</div>
+      </div>
+    </div>
+    <!-- Item 4: Bottom left — lush foliage -->
+    <div class="pg-item pg-item-4 rv">
+      <img class="pg-img" src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=500&q=85&auto=format&fit=crop" alt="Canopy specimen" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22400%22/%3E%3C/svg%3E'">
+      <div class="pg-label">
+        <div class="pg-specimen">Specimen #5503</div>
+        <div class="pg-name">Luminous Canopy Web</div>
+      </div>
+    </div>
+    <!-- Item 5: Bottom right — elegant desert bloom -->
+    <div class="pg-item pg-item-5 rv">
+      <img class="pg-img" src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?w=500&q=85&auto=format&fit=crop" alt="Desert rose specimen" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22400%22/%3E%3C/svg%3E'">
+      <div class="pg-label">
+        <div class="pg-specimen">Specimen #0902</div>
+        <div class="pg-name">Desert Rose Bloom</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats-band">
+  <div class="stats-inner rv">
+    <div class="stat"><div class="stat-num" data-count="80">0</div><div class="stat-lbl">Plant Models</div></div>
+    <div class="stat"><div class="stat-num" data-count="160">0</div><div class="stat-lbl">Indian Cities</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-lbl">Climate Zones</div></div>
+    <div class="stat"><div class="stat-num">AR</div><div class="stat-lbl">3D Preview</div></div>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-section rv">
+  <h2>Ready to plant your<br>future today?</h2>
+  <p>Join 12,000+ researchers and architects building the biological foundations of the next century.</p>
+  <div class="cta-btns">
+    <a href="plants.html" class="btn-green">Explore Specimens</a>
+    <a href="ai-suggestion.html" class="btn-ghost">Try AI Suggestion</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">ClimateGuard AR</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Research Ethics</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2025 ClimateGuard AR. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+
+/* Page transitions — all nav links get smooth transition class */
+document.querySelectorAll('a[href]').forEach(function(link){
+  var href=link.getAttribute('href');
+  if(href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('http')){
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      document.body.classList.add('page-leaving');
+      setTimeout(function(){window.location.href=href;},280);
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded',function(){
+  document.body.classList.add('page-enter-active');
+});
+
+/* Reveal */
+var io=new IntersectionObserver(function(e){e.forEach(function(x,i){if(x.isIntersecting){setTimeout(function(){x.target.classList.add('in');},i*60);io.unobserve(x.target);}});},{threshold:0.06});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+/* Session & logout */
+function logout(){
+  sessionStorage.removeItem('cgSignedIn');
+  alert('Signed out successfully.');
+  window.location.href='index.html';
+}
+
+/* Weather / Plants */
+// API key should NEVER be hardcoded in frontend. Use backend endpoint instead.
+var API=null;  // Placeholder
+var CITIES=["Agra","Ahmedabad","Aizawl","Ajmer","Alappuzha","Aligarh","Allahabad","Ambala","Amravati","Amritsar","Anantapur","Asansol","Aurangabad","Ayodhya","Bahraich","Bareilly","Bathinda","Belgaum","Bellary","Bengaluru","Bhagalpur","Bharatpur","Bhavnagar","Bhilai","Bhiwandi","Bhopal","Bhubaneswar","Bidar","Bikaner","Bilaspur","Bokaro","Calicut","Chandigarh","Chennai","Coimbatore","Cuttack","Darbhanga","Dehradun","Delhi","Dhanbad","Durgapur","Erode","Faridabad","Gandhinagar","Gangtok","Gaya","Ghaziabad","Gorakhpur","Guntur","Gurgaon","Guwahati","Gwalior","Haridwar","Howrah","Hubli","Hyderabad","Imphal","Indore","Jabalpur","Jaipur","Jalandhar","Jammu","Jamnagar","Jamshedpur","Jhansi","Jodhpur","Kakinada","Kanpur","Karimnagar","Karnal","Kochi","Kolhapur","Kolkata","Kollam","Kota","Kottayam","Kurnool","Lucknow","Ludhiana","Madurai","Mangaluru","Mathura","Meerut","Mirzapur","Moradabad","Mumbai","Muzaffarpur","Mysore","Nagercoil","Nagpur","Nashik","Nellore","New Delhi","Noida","Panipat","Patna","Pilibhit","Pondicherry","Pune","Puri","Raipur","Rajkot","Ranchi","Rohtak","Saharanpur","Salem","Surat","Thane","Thiruvananthapuram","Thrissur","Tiruchirappalli","Tirupati","Udaipur","Vadodara","Varanasi","Vellore","Vijayawada","Visakhapatnam","Warangal"];
+var DB={
+  "Wheat Plant":{d:"Essential staple grain, thrives in cool dry climates.",z:"temperate",m:"wheat__free.glb",s:"0.8 0.8 0.8",e:"&#127806;",cl:"tmz"},
+  "Frangipani Tree":{d:"Tropical flowering tree with heavenly fragrant blossoms.",z:"tropical",m:"realistic_hd_frangipani_tree_150.glb",s:"2.5 2.5 2.5",e:"&#127800;",cl:"tz"},
+  "Rose":{d:"Classic flowering shrub prized for its beauty and scent.",z:"temperate",m:"rose_flower.glb",s:"0.5 0.5 0.5",e:"&#127801;",cl:"tmz"},
+  "Rubber Plant":{d:"Large-leafed indoor tree excellent for air purification.",z:"indoor",m:"rubber_plant_fig.glb",s:"1.4 1.4 1.4",e:"&#127807;",cl:"iz"},
+  "Snowdrop":{d:"Delicate white bell-shaped flower blooming in late winter.",z:"cold",m:"snowdrop_pack_lowpoly_gameready_lod.glb",s:"0.2 0.2 0.2",e:"&#10052;&#65039;",cl:"cz"},
+  "Spider Plant":{d:"Easy-care indoor plant producing cascading plantlets.",z:"indoor",m:"spider_plant.glb",s:"0.4 0.4 0.4",e:"&#127807;",cl:"iz"},
+  "Spruce Tree":{d:"Majestic coniferous evergreen thriving in cold regions.",z:"cold",m:"spruce_tree_-_low_poly.glb",s:"4 4 4",e:"&#127794;",cl:"cz"},
+  "Sugarcane":{d:"Tall tropical grass cultivated for sugar production.",z:"humid",m:"sugarcane.glb",s:"2 2 2",e:"&#127803;",cl:"hz"},
+  "Sunflower":{d:"Cheerful sun-following bloom thriving in warm climates.",z:"temperate",m:"sunflower.glb",s:"1.2 1.2 1.2",e:"&#127803;",cl:"tmz"},
+  "Taro":{d:"Tropical root vegetable needing consistently moist soil.",z:"humid",m:"taro.glb",s:"0.6 0.6 0.6",e:"&#129388;",cl:"hz"},
+  "Thyme":{d:"Fragrant culinary herb preferring dry sunny conditions.",z:"temperate",m:"thyme_bush.glb",s:"0.25 0.25 0.25",e:"&#127807;",cl:"tmz"},
+  "Tulsi Holy Basil":{d:"Sacred medicinal herb deeply valued in Indian culture.",z:"tropical",m:"tulsi_tree_on_a_cement_tub.glb",s:"0.4 0.4 0.4",e:"&#127807;",cl:"tz"},
+  "Pansy":{d:"Colourful cold-season flower with distinctive face markings.",z:"temperate",m:"violaceae__primula_pansy_flower__primrose.glb",s:"0.3 0.3 0.3",e:"&#127800;",cl:"tmz"},
+  "Western Juniper":{d:"Hardy drought-tolerant evergreen for arid landscapes.",z:"desert",m:"western_juniper.glb",s:"2 2 2",e:"&#127795;",cl:"dz"},
+  "Neem Tree":{d:"Revered medicinal tree with outstanding drought tolerance.",z:"tropical",m:"neem_tree.glb",s:"3.5 3.5 3.5",e:"&#127795;",cl:"tz"},
+  "Oak Tree":{d:"Majestic deciduous tree, backbone of temperate forests.",z:"temperate",m:"oak_tree.glb",s:"4 4 4",e:"&#127795;",cl:"tmz"},
+  "Prickly Pear Cactus":{d:"Iconic succulent with edible pads and vibrant fruits.",z:"desert",m:"opuntia_prickly_pear_cactus.glb",s:"1 1 1",e:"&#127795;",cl:"dz"},
+  "Peace Lily":{d:"Elegant indoor plant with white spathes, purifies air.",z:"indoor",m:"peace_lily.glb",s:"0.5 0.5 0.5",e:"&#127807;",cl:"iz"},
+  "Pine":{d:"Towering evergreen conifer at home in cold mountain forests.",z:"cold",m:"pine.glb",s:"4 4 4",e:"&#127794;",cl:"cz"},
+  "Plumeria":{d:"Stunning tropical bloom with an intoxicating fragrance.",z:"tropical",m:"plumeria_flower.glb",s:"0.9 0.9 0.9",e:"&#127802;",cl:"tz"},
+  "Pomegranate":{d:"Ancient fruit tree thriving in semi-arid warm climates.",z:"temperate",m:"pomegranatepunica_granatum_l..glb",s:"1.5 1.5 1.5",e:"&#127822;",cl:"tmz"},
+  "Pothos":{d:"Trailing indoor vine, nearly impossible to kill.",z:"indoor",m:"pothos_plant.glb",s:"0.8 0.8 0.8",e:"&#127807;",cl:"iz"},
+  "Morning Glory":{d:"Climbing vine bursting with vibrant trumpet-shaped blooms.",z:"tropical",m:"morning_glory_dense_plant_points_challenge.glb",s:"1 1 1",e:"&#128144;",cl:"tz"},
+  "Jasmine":{d:"Beloved fragrant vine filling warm evenings with scent.",z:"tropical",m:"jasmine.glb",s:"0.7 0.7 0.7",e:"&#127804;",cl:"tz"},
+  "Joshua Tree":{d:"Iconic slow-growing desert sentinel of arid landscapes.",z:"desert",m:"joshua_trees.glb",s:"3 3 3",e:"&#127795;",cl:"dz"},
+  "Lavender":{d:"Aromatic Mediterranean herb beloved by pollinators.",z:"temperate",m:"lavender.glb",s:"0.4 0.4 0.4",e:"&#128144;",cl:"tmz"},
+  "Mango Tree":{d:"King of Indian fruits, thrives in tropical warmth.",z:"tropical",m:"mango_tree (1).glb",s:"3 3 3",e:"&#129389;",cl:"tz"},
+  "Mangrove Tree":{d:"Vital coastal guardian, salt-tolerant, ecosystem-forming.",z:"humid",m:"mangrove_tree.glb",s:"3.5 3.5 3.5",e:"&#127795;",cl:"hz"},
+  "Maple Tree":{d:"Spectacular deciduous tree with dazzling autumn foliage.",z:"temperate",m:"maple_tree.glb",s:"4 4 4",e:"&#127809;",cl:"tmz"},
+  "Fir Tree":{d:"Elegant conifer gracing mountain slopes and cold forests.",z:"cold",m:"fir_tree.glb",s:"4 4 4",e:"&#127794;",cl:"cz"},
+  "Fishhook Barrel Cactus":{d:"Large cylindrical cactus with dramatic curved spines.",z:"desert",m:"fishhook_barrel_cactus.glb",s:"0.8 0.8 0.8",e:"&#127795;",cl:"dz"},
+  "Money Plant":{d:"Iconic trailing houseplant said to bring prosperity.",z:"indoor",m:"free_pothos_potted_plant_-_money_plant.glb",s:"0.8 0.8 0.8",e:"&#128154;",cl:"iz"},
+  "Tulip":{d:"Elegant spring bulb blooming in a spectrum of colours.",z:"temperate",m:"generic_tulip_flower.glb",s:"0.4 0.4 0.4",e:"&#127799;",cl:"tmz"},
+  "Ginger":{d:"Tropical rhizome prized for culinary and medicinal use.",z:"tropical",m:"ginger_root.glb",s:"0.3 0.3 0.3",e:"&#129386;",cl:"tz"},
+  "Grape Vine":{d:"Woody climbing vine producing sweet fruit in warm climates.",z:"temperate",m:"grape_vines.glb",s:"2 2 2",e:"&#127815;",cl:"tmz"},
+  "Guava Tree":{d:"Productive tropical fruit tree with distinctive flavour.",z:"tropical",m:"guava_tree_3d_model.glb",s:"2 2 2",e:"&#129373;",cl:"tz"},
+  "Jade Plant":{d:"Succulent houseplant with thick glossy leaves and longevity.",z:"indoor",m:"jade_plant.glb",s:"0.6 0.6 0.6",e:"&#128150;",cl:"iz"},
+  "Tea Plant":{d:"The source of all tea, thrives on cool humid hillsides.",z:"humid",m:"cc0___tea_plant_camellia_sinensis.glb",s:"1 1 1",e:"&#9749;",cl:"hz"},
+  "Cedar":{d:"Aromatic giant conifer known for its fragrant wood.",z:"cold",m:"cedar.glb",s:"4.5 4.5 4.5",e:"&#127794;",cl:"cz"},
+  "Cherry Blossom":{d:"Celebrated flowering tree, stunning in spring bloom.",z:"temperate",m:"cherry_blossom_trees.glb",s:"3 3 3",e:"&#127800;",cl:"tmz"},
+  "Coconut Palm":{d:"The tree of life for tropical coastal communities.",z:"humid",m:"coconut_palm.glb",s:"2.5 2.5 2.5",e:"&#127796;",cl:"hz"},
+  "Coffee Plant":{d:"Source of the worlds favourite morning ritual.",z:"humid",m:"coffee_plant_sasha_an.glb",s:"1.2 1.2 1.2",e:"&#9749;",cl:"hz"},
+  "Colocasia":{d:"Bold tropical foliage with enormous heart-shaped leaves.",z:"tropical",m:"colocasia_potted.glb",s:"0.7 0.7 0.7",e:"&#127807;",cl:"tz"},
+  "Daffodil":{d:"Cheerful spring bulb with iconic trumpet-shaped bloom.",z:"temperate",m:"daffodil.glb",s:"0.3 0.3 0.3",e:"&#127804;",cl:"tmz"},
+  "Daisy":{d:"Simple cheerful flower with white petals and golden centre.",z:"temperate",m:"daisy_flower.glb",s:"0.2 0.2 0.2",e:"&#127804;",cl:"tmz"},
+  "Date Palm":{d:"Ancient desert fruit tree, essential to arid communities.",z:"desert",m:"date_palm.glb",s:"3.5 3.5 3.5",e:"&#127796;",cl:"dz"},
+  "Snake Plant":{d:"Near-indestructible air purifier thriving on neglect.",z:"indoor",m:"day_178_snake_plant.glb",s:"0.7 0.7 0.7",e:"&#127807;",cl:"iz"},
+  "Desert Rose":{d:"Striking slow-growing succulent blooming in arid heat.",z:"desert",m:"desert_rose.glb",s:"0.6 0.6 0.6",e:"&#127801;",cl:"dz"},
+  "Fern":{d:"Ancient moisture-loving shade plant with delicate fronds.",z:"humid",m:"fern.glb",s:"0.6 0.6 0.6",e:"&#127807;",cl:"hz"},
+  "Cactus":{d:"Master of survival in the harshest dry environments.",z:"desert",m:"cactus.glb",s:"0.5 0.5 0.5",e:"&#127795;",cl:"dz"},
+  "Aloe Vera":{d:"Multipurpose succulent with legendary healing properties.",z:"desert",m:"aloe_vera_plant.glb",s:"0.4 0.4 0.4",e:"&#127807;",cl:"dz"},
+  "Apple Tree":{d:"Classic orchard tree requiring cold winters for sweet fruit.",z:"cold",m:"apple_tree.glb",s:"3.5 3.5 3.5",e:"&#127822;",cl:"cz"},
+  "Areca Palm":{d:"Elegant ornamental palm adding tropical flair anywhere.",z:"humid",m:"areca_palm_lowpoly.glb",s:"1.5 1.5 1.5",e:"&#127796;",cl:"hz"},
+  "Bamboo":{d:"The worlds fastest growing plant, versatile and elegant.",z:"humid",m:"bamboo.glb",s:"2 2 2",e:"&#127808;",cl:"hz"},
+  "Banana Plant":{d:"Lush tropical fruit plant bringing instant jungle drama.",z:"tropical",m:"banana_plant.glb",s:"1.8 1.8 1.8",e:"&#127820;",cl:"tz"},
+  "Birch Tree":{d:"Graceful tree with striking white bark, glowing in winter.",z:"cold",m:"birch_tree.glb",s:"3.8 3.8 3.8",e:"&#127795;",cl:"cz"},
+  "Bougainvillea":{d:"Blazing drought-tolerant climber, a wall of pure colour.",z:"desert",m:"bougainvillea_day_26.glb",s:"1 1 1",e:"&#127802;",cl:"dz"},
+  "Rice Plant":{d:"The staple grain feeding over half of humanity.",z:"humid",m:"rice_plant.glb",s:"0.7 0.7 0.7",e:"&#127806;",cl:"hz"},
+  "Chinese Evergreen":{d:"Stunning patterned indoor plant with extreme tolerance.",z:"indoor",m:"aglaonema_chinese_evergreen_-_sketchfab_weekly.glb",s:"0.7 0.7 0.7",e:"&#127807;",cl:"iz"}
+};
+var CATS={
+  desert:["Prickly Pear Cactus","Fishhook Barrel Cactus","Joshua Tree","Cactus","Aloe Vera","Bougainvillea","Western Juniper","Desert Rose","Date Palm"],
+  tropical:["Frangipani Tree","Tulsi Holy Basil","Neem Tree","Plumeria","Mango Tree","Morning Glory","Jasmine","Ginger","Guava Tree","Colocasia","Banana Plant"],
+  humid:["Rice Plant","Sugarcane","Taro","Mangrove Tree","Tea Plant","Coconut Palm","Coffee Plant","Fern","Areca Palm","Bamboo"],
+  temperate:["Wheat Plant","Rose","Sunflower","Thyme","Pansy","Oak Tree","Pomegranate","Lavender","Maple Tree","Tulip","Grape Vine","Cherry Blossom","Daffodil","Daisy"],
+  cold:["Snowdrop","Spruce Tree","Pine","Fir Tree","Cedar","Apple Tree","Birch Tree"],
+  indoor:["Rubber Plant","Spider Plant","Peace Lily","Pothos","Money Plant","Jade Plant","Snake Plant","Chinese Evergreen"]
+};
+var ZONES={desert:"Desert",tropical:"Tropical",humid:"Humid",temperate:"Temperate",cold:"Alpine",indoor:"Indoor"};
+document.addEventListener('DOMContentLoaded',function(){
+  var sel=document.getElementById('csel');
+  if(sel)CITIES.slice().sort().forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+});
+function getWeather(){
+  var city=document.getElementById('csel').value;
+  var wr=document.getElementById('wRes'),sp=document.getElementById('spinner');
+  wr.classList.remove('show');sp.style.display='block';
+  if(!city){alert('Please select a city.');sp.style.display='none';return;}
+  fetch('https://api.openweathermap.org/data/2.5/weather?q='+encodeURIComponent(city)+',IN&units=metric&appid='+API)
+    .then(function(r){return r.json();})
+    .then(function(d){
+      sp.style.display='none';
+      if(d.cod!==200){wr.innerHTML='Could not get weather for '+city+'.';wr.classList.add('show');return;}
+      var t=d.main.temp,h=d.main.humidity,desc=d.weather[0].description,icon=d.weather[0].icon;
+      wr.innerHTML='<img src="https://openweathermap.org/img/wn/'+icon+'.png" style="width:22px;height:22px;vertical-align:middle;margin-right:4px"><b>'+d.name+'</b> &nbsp; '+t.toFixed(1)+'&#176;C &nbsp; '+h+'% humidity &nbsp; '+desc;
+      wr.classList.add('show');
+      var cat='temperate';
+      if(t<10)cat='cold';else if(t<20)cat='temperate';
+      else if(t<30)cat=(h>75||/rain|mist|drizzle/.test(desc))?'humid':'tropical';
+      else if(h<40)cat='desert';else if(h>80||/rain|mist/.test(desc))cat='humid';else cat='tropical';
+      showPlants(CATS[cat]||CATS.tropical,cat,d.name);
+    })
+    .catch(function(){sp.style.display='none';wr.innerHTML='Network error.';wr.classList.add('show');});
+}
+function showPlants(list,zone,city){
+  var pg=document.getElementById('pGrid'),rm=document.getElementById('rMeta'),rt=document.getElementById('rTitle'),zt=document.getElementById('zTag');
+  pg.innerHTML='';rm.style.display='flex';
+  rt.textContent=list.length+' specimens matched for '+city;
+  zt.textContent=ZONES[zone]||zone;
+  list.forEach(function(name,i){
+    var p=DB[name];if(!p)return;
+    var c=document.createElement('div');c.className='p-card';
+    var url='ar-view.html?plant='+encodeURIComponent(name)+'&model='+encodeURIComponent(p.m)+'&scale='+encodeURIComponent(p.s);
+    c.innerHTML='<div class="p-img '+p.cl+'"><div class="p-ztag">'+p.z+'</div>'+p.e+'</div><div class="p-body"><div class="p-name">'+name+'</div><p class="p-desc">'+p.d+'</p><a class="p-ar" href="'+url+'" target="_blank">View AR Specimen</a></div>';
+    pg.appendChild(c);
+    setTimeout(function(){c.classList.add('show');},40+i*45);
+  });
+}
+</script>
+</body>
+</html>
+=======
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClimateGard | Home</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 { margin: 0; font-size: 2.2em; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      padding: 6px 8px;
+    }
+    nav a:hover, nav a.active { color: #7fff00; }
+    .hero { padding: 100px 20px; background: rgba(0, 0, 0, 0.5); }
+    .hero h2 { font-size: 2.5em; }
+    .hero p { font-size: 1.2em; max-width: 800px; margin: 20px auto; }
+    img { max-width: 100%; height: auto; }
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6em; }
+      .hero { padding: 60px 16px; }
+      .hero h2 { font-size: 1.8em; }
+      .hero p { font-size: 1em; padding: 0 4px; }
+      nav { gap: 6px; }
+      nav a { font-size: 0.9em; }
+      footer { position: static; }
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <header>
+    <h1>🌿 ClimateGuard</h1>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="plants.html">AR view & Suggestions</a>
+      <a href="conditions.html">Conditions</a>
+      <a href="plant-suggestion.html">AI plants optimizer</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Welcome to ClimateGuard</h2>
+    <p>ClimateGuard is your intelligent companion for sustainable gardening. We help you select the perfect plants for your region’s unique climate. Whether you live in a tropical paradise, a desert, or a cold mountain town, we make sure your garden thrives year-round.</p>
+    <p>🌱 Discover climate-smart planting, AI recommendations, and eco-friendly guidance to create your green oasis!</p>
+  </div>
+
+  <footer>
+    © 2025 ClimateGuard | Developed by CodingGeeks 
+  </footer>
+
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
+>>>>>>> aeb5ba890b737b73f44ba9dfafba86255630cb45
